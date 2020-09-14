@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#000"
+    android:id="@+id/drawer_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:paddingVertical="70dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border_grey_filled_curve"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+<!--
+            <ProgressBar
+                android:id="@+id/searching_bar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:indeterminateDrawable="@drawable/progress_style"
+                android:visibility="visible" />
+-->
+
+            <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:loader_animDur="100"
+                app:loader_bigCircleRadius="30dp"
+                app:loader_circleRadius="5dp"
+                app:loader_defaultColor="@color/white"
+                app:loader_firstShadowColor="@color/grey"
+                app:loader_secondShadowColor="@color/orange"
+                app:loader_selectedColor="@color/orange"
+                app:loader_showRunningShadow="true" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoeui"
+            android:text="Searching for orders"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alert"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/segoeui"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You will start getting orders soon"
+        android:textColor="#000"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:fontFamily="@font/segoeui"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        >
+
+        <TextView
+            android:id="@+id/ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:background="@drawable/border_round"
+            android:textColor="#000"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/segoeui"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
+
+

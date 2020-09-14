@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000"
+    android:weightSum="100"
+
+    >
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="30"
+       android:background="@color/card_color"
+       android:paddingHorizontal="20dp"
+       android:orientation="vertical"
+       >
+
+      <LinearLayout
+          android:id="@+id/prof_tab"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:weightSum="100"
+          >
+         <LinearLayout
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_weight="20"
+             >
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/image_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:civ_border_color="#fff"
+                app:civ_border_width="1dp"
+                android:src="@drawable/avatarmale"/>
+
+
+            <!--
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/user_home"
+                            />
+            -->
+
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:orientation="vertical"
+             android:gravity="center"
+             android:layout_weight="70"
+             android:layout_marginLeft="10dp"
+             >
+            <TextView
+                android:id="@+id/user_name_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Priyanka"
+                android:textSize="18dp"
+                android:fontFamily="@font/segoeui"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DE ID : 1026"
+                android:textSize="18dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                />
+
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="10"
+             android:gravity="center_vertical"
+             >
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_right_angle_arrow"
+                />
+
+         </LinearLayout>
+
+      </LinearLayout>
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/seperator"
+          />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Duty Status"
+             android:layout_marginTop="15dp"
+             android:textSize="16dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="#fff"
+             />
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:gravity="right"
+             >
+         <com.github.angads25.toggle.LabeledSwitch
+             android:id="@+id/switch_duty"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginVertical="16dp"
+             android:textSize="14sp"
+             app:colorBorder="@color/grey_text"
+             app:colorOn="@color/colorPrimary"
+             app:on="false"
+             android:textColor="@color/grey_text"
+             android:padding="10dp"
+             app:textOff="OFF"
+             app:textOn="ON" />
+         </LinearLayout>
+
+      </LinearLayout>
+
+   </LinearLayout>
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="70"
+       android:layout_marginHorizontal="20dp"
+       android:orientation="vertical"
+       >
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:orientation="vertical"
+          >
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:paddingVertical="15dp"
+             android:layout_gravity="center_vertical"
+             >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/email"
+                />
+         <TextView
+             android:id="@+id/earning"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="@string/Earnings"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="#fff"
+             />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:paddingVertical="15dp"
+             android:layout_gravity="center_vertical"
+             >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/email"
+                />
+            <TextView
+                android:id="@+id/floating_cash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Floating Cash"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:paddingVertical="15dp"
+             android:layout_gravity="center_vertical"
+             >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/email"
+                />
+            <TextView
+                android:id="@+id/rewards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rewards"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:paddingVertical="15dp"
+             android:layout_gravity="center_vertical"
+             >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/email"
+                />
+            <TextView
+                android:id="@+id/login_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login History"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                />
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:paddingVertical="15dp"
+             android:layout_gravity="center_vertical"
+             >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/email"
+                />
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Message Center"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                />
+         </LinearLayout>
+
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:background="@color/seperator"
+             android:layout_marginTop="10dp"
+             />
+
+
+         <TextView
+             android:id="@+id/refer"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Refer a Friend"
+             android:textSize="16dp"
+             android:layout_marginTop="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             />
+
+         <TextView
+             android:id="@+id/help"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Help"
+             android:textSize="16dp"
+             android:layout_marginTop="15dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"             />
+
+         <TextView
+             android:id="@+id/logout"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Logout"
+             android:textSize="16dp"
+             android:layout_marginTop="15dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             />
+
+      </LinearLayout>
+
+   </ScrollView>
+
+</LinearLayout>

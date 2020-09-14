@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/segoeui"
+        android:text="Confirm Items Available?"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure all items are available? A penalty might be applied if you miss to pick some items."
+        android:textColor="#000"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:fontFamily="@font/segoeui"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/missing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ITEM MISSING"
+            android:background="@drawable/border_white_grey_filled_curve"
+            android:textColor="@color/grey_text"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/segoeui"
+            />
+
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONFIRM"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/border_blue_filled_curve"
+            android:textColor="#fff"
+            android:paddingHorizontal="21dp"
+            android:paddingVertical="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/segoeui"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
+
+

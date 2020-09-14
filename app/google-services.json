@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "845695298606",
+    "firebase_url": "https://nine-delivery.firebaseio.com",
+    "project_id": "nine-delivery",
+    "storage_bucket": "nine-delivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845695298606:android:05683c29f61f4f7dec03bf",
+        "android_client_info": {
+          "package_name": "com.sevennine.Delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845695298606-9u577ngfq6momdge42i2tu5av391o5f9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sevennine.Delivery",
+            "certificate_hash": "8cb25d8dcfbfc0e7876cb3058743b9a6408da1d7"
+          }
+        },
+        {
+          "client_id": "845695298606-33916p88gk97rebds74kiatj356e3fua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADzIqS3z-iT3MPnrC9aYusffruUuaj6tY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845695298606-33916p88gk97rebds74kiatj356e3fua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet1"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@color/popup_bg"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <!--<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/popup_bg"
+        card_view:cardElevation="10dp"
+        card_view:cardCornerRadius="10dp">-->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/popup_bg"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/blue"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoeui"
+            android:text="Rate Pick up Experience"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:padding="10dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoeui"
+        android:text="Provide your rating for pick up from store"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="30dp"
+        >
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/border_light_grey_filled_curve"
+            android:textColor="#fff"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp"
+            android:fontFamily="@font/segoeui"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
+
+<!--
+    </androidx.cardview.widget.CardView>
+-->
+
+</LinearLayout>

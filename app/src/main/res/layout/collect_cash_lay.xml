@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000"
+    android:id="@+id/drawer_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:id="@+id/back_feed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="10dp"
+                android:background="@drawable/ripple_effect"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_go_back_left_arrow_"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/border_grey_filled_curve"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="100"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="15dp"
+                            android:layout_gravity="center"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoeui"
+                                android:text="Deliver"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/white"
+                                android:textSize="16dp"
+                                android:gravity="center_vertical"
+                                android:textStyle="bold"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoeui"
+                                android:text=" - 1234567"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/white"
+                                android:textSize="16dp"
+                                android:gravity="center_vertical"
+                                android:textStyle="bold"
+                                />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="15dp"
+                android:background="@drawable/border_popupbag_filled_curve"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/border_blue_filled_topcurve"
+                    android:padding="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:background="@drawable/border_round_white"
+                        android:textColor="#000"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/segoeui"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Collect ₹ 300 from Customer"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_vertical"
+                    >
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/rupee_green"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        />
+                    <TextView
+                        android:id="@+id/amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="300"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="40dp"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:text="To be collected from customer"
+                    android:textColor="@color/grey_text"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/collect_cash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/border_blue_filled_curve"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginHorizontal="15dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="COLLECT CASH"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical"
+                        android:textStyle="bold"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="15dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/call_instuction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:background="@drawable/border_deli_instru_bag_filled_curve"
+                android:layout_marginHorizontal="10dp"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:text="DELIVERY INSTRUCTION"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/grey_text"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Call me once you reached. Don't ring bell"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100"
+                android:background="@drawable/border_grey_filled_curve"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="100"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="100"
+                            >
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp"
+                                android:layout_weight="100"
+                                android:layout_gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/segoeui"
+                                    android:text="Deliver"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/white"
+                                    android:textSize="16dp"
+                                    android:gravity="center_vertical"
+                                    android:textStyle="bold"
+                                    />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/segoeui"
+                                    android:text=" - 1234567"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/white"
+                                    android:textSize="16dp"
+                                    android:gravity="center_vertical"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:gravity="center"
+                                android:paddingVertical="10dp"
+
+                                >
+
+<!--
+                                <LinearLayout
+                                    android:id="@+id/pick_up_arrow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_gravity="center_vertical"
+                                    >
+                                    <ImageView
+                                        android:id="@+id/map_nav_arrow"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:src="@drawable/ic_right_angle_arrow"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginTop="2dp"
+                                        />
+
+
+                                </LinearLayout>
+-->
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/seperator"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="100"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:paddingBottom="15dp"
+                            >
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="15"
+                                >
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@drawable/shop"
+                                    android:layout_gravity="center_vertical"
+                                    />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="90"
+                                android:orientation="vertical"
+                                >
+                                <TextView
+                                    android:id="@+id/cust_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/segoeui"
+                                    android:text="Customer Name"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/white"
+                                    android:textSize="16dp"
+                                    android:gravity="center_vertical"
+                                    android:textStyle="bold"
+                                    />
+                                <TextView
+                                    android:id="@+id/cust_address"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/segoeui"
+                                    android:text="Customer Address"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/grey_text"
+                                    android:textSize="14dp"
+                                    android:gravity="center_vertical"
+                                    android:textStyle="bold"
+                                    />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/reached_loc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/grey_text"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/segoeui"
+            android:layout_gravity="center"
+            android:text="REACHED DROP LOCATION"
+            android:padding="15dp"
+            android:gravity="center"
+            android:drawablePadding="20dp"
+            android:textColor="#fff"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
