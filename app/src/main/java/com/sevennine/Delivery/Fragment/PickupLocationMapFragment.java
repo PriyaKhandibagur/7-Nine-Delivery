@@ -234,8 +234,8 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
             public void onLocationChanged(final Location location) {
 
                 mMap.clear();
-              //  start = new LatLng(location.getLatitude(), location.getLongitude());
-                start = new LatLng(14.6665970992124,75.48478469252586);
+                start = new LatLng(location.getLatitude(), location.getLongitude());
+              //  start = new LatLng(14.6665970992124,75.48478469252586);
                 System.out.println("mylocationnn "+start);
                 //  String custlat = getIntent().getExtras().getString("customerlatitude");
                 //  String custlong = getIntent().getExtras().getString("customerlongitude");

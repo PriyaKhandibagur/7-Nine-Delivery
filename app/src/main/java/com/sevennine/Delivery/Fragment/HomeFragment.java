@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Navi
 Fragment selectedFragment;
     public static DrawerLayout drawer;
     ImageView search;
-    LinearLayout menu,prof_tab;
+    LinearLayout menu,profile_arrow;
     LabeledSwitch switch_duty;
     String userid;
     public static String switch_on;
@@ -93,6 +93,7 @@ static Fragment myloadingfragment;
         menu=view.findViewById(R.id.menu);
         home=view.findViewById(R.id.home);
         logout=view.findViewById(R.id.logout);
+        profile_arrow=view.findViewById(R.id.profile_arrow);
       //  shop_cat=view.findViewById(R.id.shop_cat);
       //  disc_store=view.findViewById(R.id.disc_store);
         drawer =view.findViewById(R.id.drawer_layout1);
@@ -289,6 +290,17 @@ static Fragment myloadingfragment;
                                         startActivity(intent);
                                     }
                                 });
+                    }
+                });
+
+                profile_arrow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedFragment = ProfileFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.commit();
+                        drawer.closeDrawers();
                     }
                 });
 

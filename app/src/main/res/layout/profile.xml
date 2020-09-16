@@ -4,16 +4,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000"
-    android:weightSum="100"
-
+    android:background="@drawable/border_profile_filled_curve"
     >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:fitsSystemWindows="true"
+       android:layout_gravity="center_vertical"
+       android:gravity="center_vertical"
+       android:padding="10dp"
+       >
+
+      <!--<android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:minHeight="?attr/actionBarSize"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:titleTextColor="@android:color/white"
+          android:background="@color/green"
+          >
+-->
+      <LinearLayout
+          android:id="@+id/back_feed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:padding="10dp"
+          android:background="@drawable/ripple_effect"
+          android:layout_marginLeft="5dp"
+          android:layout_marginTop="5dp"
+          >
+
+         <ImageView
+             android:layout_width="20dp"
+             android:layout_height="20dp"
+             android:layout_gravity="center_vertical"
+             android:src="@drawable/ic_go_back_left_arrow_"
+             android:background="?attr/selectableItemBackgroundBorderless"
+
+             />
+
+      </LinearLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="PROFILE"
+          android:textSize="20dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginHorizontal="15dp"
+          android:fontFamily="@font/segoeui"
+          android:textColor="#fff"
+          android:id="@+id/lang_title" />
+
+      <!--
+                </android.support.v7.widget.Toolbar>
+      -->
+
+   </LinearLayout>
+
 
    <LinearLayout
        android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:layout_weight="30"
-       android:background="@color/card_color"
+       android:layout_height="match_parent"
+       android:weightSum="100"
+       android:orientation="vertical"
+       android:background="@drawable/border_profile_box_filled_curve"
+       >
+   <LinearLayout
+       android:id="@+id/profile_layout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
        android:paddingHorizontal="20dp"
        android:orientation="vertical"
        >
@@ -23,7 +83,10 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
+          android:background="@drawable/border_profile_box_filled_curve"
+          android:paddingHorizontal="10dp"
           android:weightSum="100"
+
           >
          <LinearLayout
              android:layout_width="0dp"
@@ -82,7 +145,6 @@
          </LinearLayout>
 
          <LinearLayout
-             android:id="@+id/profile_arrow"
              android:layout_width="0dp"
              android:layout_height="match_parent"
              android:layout_weight="10"
@@ -102,61 +164,50 @@
           android:layout_width="match_parent"
           android:layout_height="1dp"
           android:background="@color/seperator"
+          android:layout_marginBottom="30dp"
           />
 
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          >
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Duty Status"
-             android:layout_marginTop="15dp"
-             android:textSize="16dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#fff"
-             />
+<!--
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginBottom="-10dp"
 
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:gravity="right"
-             >
-         <com.github.angads25.toggle.LabeledSwitch
-             android:id="@+id/switch_duty"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginVertical="16dp"
-             android:textSize="14sp"
-             app:colorBorder="@color/grey_text"
-             app:colorOn="@color/colorPrimary"
-             app:on="false"
-             android:textColor="@color/grey_text"
-             android:padding="10dp"
-             app:textOff="OFF"
-             app:textOn="ON" />
-         </LinearLayout>
+           >
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:fontFamily="@font/segoeui"
+               android:text="@string/Earnings"
+               android:textColor="@color/white"
+               android:textSize="16dp" />
 
-      </LinearLayout>
+       </LinearLayout>
+-->
 
    </LinearLayout>
+
+
    <ScrollView
        android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:layout_weight="70"
-       android:layout_marginHorizontal="20dp"
+       android:layout_height="match_parent"
        android:orientation="vertical"
+       android:background="@color/black"
+       android:layout_below="@id/profile_layout"
        >
 
       <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="0dp"
+          android:layout_height="wrap_content"
           android:orientation="vertical"
+          android:layout_marginHorizontal="20dp"
+
           >
 
-         <LinearLayout
+
+          <LinearLayout
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:orientation="horizontal"
@@ -172,7 +223,7 @@
              android:id="@+id/earning"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="@string/Earnings"
+             android:text="Personal Details"
              android:textSize="16dp"
              android:layout_marginLeft="20dp"
              android:fontFamily="@font/segoeui"
@@ -196,7 +247,7 @@
                 android:id="@+id/floating_cash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Floating Cash"
+                android:text="Personal Savings Account"
                 android:textSize="16dp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/segoeui"
@@ -220,7 +271,7 @@
                 android:id="@+id/rewards"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rewards"
+                android:text="7-Nine Id Card"
                 android:textSize="16dp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/segoeui"
@@ -244,30 +295,7 @@
                 android:id="@+id/login_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login History"
-                android:textSize="16dp"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/segoeui"
-                android:textColor="#fff"
-                />
-         </LinearLayout>
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal"
-             android:paddingVertical="15dp"
-             android:layout_gravity="center_vertical"
-             >
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/email"
-                />
-            <TextView
-                android:id="@+id/message"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Message Center"
+                android:text="7-Nine ID Card QR Code"
                 android:textSize="16dp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/segoeui"
@@ -283,28 +311,6 @@
              android:layout_marginTop="10dp"
              />
 
-
-         <TextView
-             android:id="@+id/refer"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Refer a Friend"
-             android:textSize="16dp"
-             android:layout_marginTop="20dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="@color/grey_text"
-             />
-
-         <TextView
-             android:id="@+id/help"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Help"
-             android:textSize="16dp"
-             android:layout_marginTop="15dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="@color/grey_text"             />
-
          <TextView
              android:id="@+id/logout"
              android:layout_width="match_parent"
@@ -319,5 +325,5 @@
       </LinearLayout>
 
    </ScrollView>
-
+   </LinearLayout>
 </LinearLayout>
