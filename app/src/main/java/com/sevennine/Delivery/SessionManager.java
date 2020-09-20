@@ -33,11 +33,22 @@ public class SessionManager {
     public static final String KEY_PHONE = "phone";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER_ID = "userId";
+    public static final String KEY_ORDERID = "orderid";
     public static final String KEY_LNG_SELECTED = "lng";
     public static final String KEY_LANGUAGE = "language";
     public static final String KEY_LANGUAGE_NAME = "language_name";
     public static final String KEY_LAT = "latitude";
     public static final String KEY_LNG = "longtitude";
+    public static final String KEY_STORENAME = "storename";
+    public static final String KEY_STOREADDRESS = "storeaddress";
+    public static final String KEY_CUSTNAME = "custname";
+    public static final String KEY_CUSTADDRESS = "custaddress";
+    public static final String KEYTOTALAMOUNT = "totalamount";
+    public static final String KEY_STORELAT = "storelat";
+    public static final String KEY_STORELANG = "storelang";
+    public static final String KEY_CUSTLAT = "custlat";
+    public static final String KEY_CUSTLANG = "custlang";
+    public static final String KEY_PICKUPID = "pickupid";
    // public static final String KEY_LOCATION ="loc";
 
     public static final String KEY_LOCATION = "location";
@@ -127,37 +138,43 @@ public class SessionManager {
     /**
      * Create remenberme session
      * */
-    public void saveUserId(String userId){
+    public void saveorderkey(String orderkey){
 
 
         // Storing name in pref
-        loginPrefsEditor.putString(KEY_USER_ID, userId);
+        loginPrefsEditor.putString(KEY_ORDERID, orderkey);
 
 
         // commit changes
         loginPrefsEditor.commit();
     }
 
-    public void saveLanguage(String language){
+    public void saveuserid(String userid){
 
 
         // Storing name in pref
-        loginPrefsEditor.putString(KEY_LANGUAGE, language);
+        loginPrefsEditor.putString(KEY_USER_ID, userid);
 
 
         // commit changes
         loginPrefsEditor.commit();
     }
 
-    /*public void save_name(String name , String phone,String image){
-        System.out.println("111111111111aaaa"+name);
+    public void saveorderdetails(String storename , String storeaddress,String customername,String customeraddress,String totalamount,String storelat,String storelang,String custlat,String custlang,String pickupId){
         // Storing name in pref
-        loginPrefsEditor.putString(KEY_NAME, name);
-        loginPrefsEditor.putString(KEY_PHONE, phone);
-        loginPrefsEditor.putString(KEY_IMAGE, image);
+        loginPrefsEditor.putString(KEY_STORENAME, storename);
+        loginPrefsEditor.putString(KEY_STOREADDRESS, storeaddress);
+        loginPrefsEditor.putString(KEY_CUSTNAME, customername);
+        loginPrefsEditor.putString(KEY_CUSTADDRESS, customeraddress);
+        loginPrefsEditor.putString(KEYTOTALAMOUNT, totalamount);
+        loginPrefsEditor.putString(KEY_STORELAT, storelat);
+        loginPrefsEditor.putString(KEY_STORELANG, storelang);
+        loginPrefsEditor.putString(KEY_CUSTLAT, custlat);
+        loginPrefsEditor.putString(KEY_CUSTLANG, custlang);
+        loginPrefsEditor.putString(KEY_PICKUPID, pickupId);
         // commit changes
         loginPrefsEditor.commit();
-    }*/
+    }
 
     public void save_name( String phone){
         loginPrefsEditor.putString(KEY_PHONE, phone);

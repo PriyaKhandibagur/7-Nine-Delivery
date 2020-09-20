@@ -110,6 +110,8 @@ static Fragment myloadingfragment;
         navigationView.setNavigationItemSelectedListener(this);
 
          userId = user.getUid();
+         sessionManager.saveuserid(userId);
+
 
         mProfileRef.child(userId).child("Duty Status").orderByChild("dutyOn").addChildEventListener(new ChildEventListener() {
             @Override

@@ -160,6 +160,8 @@ public class OrdersListAdapter extends RecyclerView.Adapter<OrdersListAdapter.My
             holder.customer_name.setText(products.getUsername());
             holder.customer_address.setText(products.getAddr());
             holder.amount.setText(products.getProd_price());
+            holder.storename.setText(products.getStorename());
+            holder.store_address.setText(products.getStoreaddress1()+","+products.getStoreaddress2());
         }
                  Location startPoint=new Location("locationA");
            startPoint.setLatitude(14.6665970992124);
@@ -215,11 +217,13 @@ public class OrdersListAdapter extends RecyclerView.Adapter<OrdersListAdapter.My
                // stores.child(userId).push().setValue(store);
 
                 // DatabaseReference postsRef = mProfileRef.child("OrderSummary");
-              /*  String key = mProfileRef.child("Order Summary").push().getKey();
+                String key = mProfileRef.child("Order Summary").push().getKey();
                 System.out.println("pushkeyidddd "+key);
 
-                mProfileRef.child(userId).child("Order Summary").child(key).setValue(new Person(products.getPayuid(), "Siddivinayaka stores","#201, Siddivinayaka stores, Vidya Nagar Byadgi, near BESM College",store_lat,cust_name,cust_addr,customer_lat,firstmile,lastmile,distance_total,timing,total_amount));
-*/
+               /* mProfileRef.child(userId).child("Order Summary").child(key).setValue(new Person(products.getPayuid(), "Siddivinayaka stores","#201, Siddivinayaka stores, Vidya Nagar Byadgi, near BESM College",store_lat,cust_name,cust_addr,customer_lat,firstmile,lastmile,distance_total,timing,total_amount));
+                sessionManager.saveorderkey(key);*/
+                sessionManager.saveorderdetails(products.getStorename(),holder.store_address.getText().toString(),products.getUsername(),products.getAddr(),products.getProd_price(),products.getLatitude(),products.getLongitude(),products.getCustlat(),products.getCustlong(),products.getPayuid());
+
               //  String mGroupId = mProfileRef.child("Order Summary").getKey();
 
              //   System.out.println("pushkeyidddd "+mGroupId);

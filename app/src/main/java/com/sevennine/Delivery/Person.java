@@ -24,6 +24,9 @@ public class Person {
 
     }
 
+    public Person() {
+    }
+
     public String getOrderId() {
         return orderId;
     }

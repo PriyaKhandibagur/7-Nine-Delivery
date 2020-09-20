@@ -240,7 +240,7 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
                 //  String custlat = getIntent().getExtras().getString("customerlatitude");
                 //  String custlong = getIntent().getExtras().getString("customerlongitude");
                 //  end = new LatLng(Double.parseDouble(custlat), Double.parseDouble(custlong));
-                end = new LatLng(14.6665970992124,75.48478469252586);
+                end = new LatLng(14.665102499999998,75.4860463);
 
                 System.out.println("dhjdhlk "+end+","+start);
                 //  mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(start,16));
@@ -257,7 +257,7 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
                 map_nav_arrow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String uri = "http://maps.google.com/maps?saddr=" + location.getLatitude() + "," + location.getLongitude() + "&daddr=" +14.6665970992124+ "," +75.48478469252586;
+                        String uri = "http://maps.google.com/maps?saddr=" + location.getLatitude() + "," + location.getLongitude() + "&daddr=" +14.665102499999998+","+75.4860463;
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                         startActivity(intent);
                     }

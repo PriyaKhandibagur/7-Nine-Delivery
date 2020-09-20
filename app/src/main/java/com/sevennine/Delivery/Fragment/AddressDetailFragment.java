@@ -10,8 +10,18 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sevennine.Delivery.Adapter.OrdersListAdapter;
+import com.sevennine.Delivery.Bean.DutyStatusBean;
 import com.sevennine.Delivery.Bean.NewOrderBean;
+import com.sevennine.Delivery.Person;
 import com.sevennine.Delivery.R;
 import com.sevennine.Delivery.SessionManager;
 import com.sevennine.Delivery.Urls;
@@ -24,6 +34,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,7 +49,12 @@ public class AddressDetailFragment extends Fragment {
 
     LinearLayout pick_up_arrow;
     Fragment selectedFragment;
-    TextView customer_address,customer_name;
+    SessionManager sessionManager;
+    TextView customer_address,customer_name,store_name,store_address,pickupid,cust_name_title;
+    String userId;
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference mProfileRef = firebaseDatabase.getReference();
+
     public static AddressDetailFragment newInstance() {
         AddressDetailFragment itemOnFragment = new AddressDetailFragment();
         return itemOnFragment;
@@ -48,6 +65,10 @@ public class AddressDetailFragment extends Fragment {
         customer_address=view.findViewById(R.id.customer_address);
         customer_name=view.findViewById(R.id.customer_name);
         pick_up_arrow=view.findViewById(R.id.pick_up_arrow);
+        store_name=view.findViewById(R.id.store_name);
+        store_address=view.findViewById(R.id.store_address);
+        cust_name_title=view.findViewById(R.id.custname_title);
+        pickupid=view.findViewById(R.id.pickupid);
         // sessionManager = new SessionManager(getActivity());
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
@@ -69,11 +90,48 @@ public class AddressDetailFragment extends Fragment {
                 return false;
             }
         });
+        sessionManager=new SessionManager(getActivity());
+        System.out.println("orderidddd "+sessionManager.getRegId("orderid"));
+
         if (getArguments()!=null) {
             customer_name.setText(getArguments().getString("customer_name1"));
             customer_address.setText(getArguments().getString("customer_address1"));
+            store_name.setText(sessionManager.getRegId("storename"));
+            store_address.setText(sessionManager.getRegId("storeaddress"));
+            cust_name_title.setText(sessionManager.getRegId("custname"));
+            pickupid.setText(" - "+sessionManager.getRegId("pickupid"));
         }
+        userId = sessionManager.getRegId("userId");
 
+       /* mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+             *//*   Person order = new Person(dataSnapshot.getValue());*//*
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    System.out.println(ds.getValue());
+
+                    ArrayList<Person> ResultList = new ArrayList<>();
+
+                    Person round = (Person) ds.getValue(Person.class);
+                    System.out.println("orderdetails" +round.getCustomeraddress());
+
+                   *//* ResultList.add(round);
+
+                    ivd_HistoryAdapter adapter = new ivd_HistoryAdapter(id_History.this, ResultList);
+                    lv_history.setAdapter(adapter);*//*
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+            // ...
+        });*/
         pick_up_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

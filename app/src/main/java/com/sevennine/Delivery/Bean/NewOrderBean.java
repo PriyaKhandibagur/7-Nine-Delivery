@@ -2,10 +2,10 @@ package com.sevennine.Delivery.Bean;
 public class NewOrderBean {
 
     String prod_price,prod_name,cod,addr,username;
-    String image,Latitude,Longitude,createddate,custlat,custlong,phone,productname,producticon,payuid,quantity,distance,timing;
+    String image,Latitude,Longitude,createddate,custlat,custlong,phone,productname,producticon,payuid,quantity,distance,timing,storename,storeaddress1,storeaddress2;
 
 
-    public NewOrderBean(String prod_name, String username, String addr, String prod_price, String cod, String image, String Latitude, String Longitude, String createddate, String custlat, String custlong, String phone, String productname, String producticon, String payuid, String quantity,String distance,String timing) {
+    public NewOrderBean(String prod_name, String username, String addr, String prod_price, String cod, String image, String Latitude, String Longitude, String createddate, String custlat, String custlong, String phone, String productname, String producticon, String payuid, String quantity,String distance,String timing,String storename,String storeaddress1,String storeaddress2) {
 
         this.prod_price = prod_price;
         this.prod_name = prod_name;
@@ -24,6 +24,12 @@ public class NewOrderBean {
         this.payuid = payuid;
         this.distance = distance;
         this.timing = timing;
+        this.storename = storename;
+        this.storeaddress1 = storeaddress1;
+        this.storeaddress2 = storeaddress2;
+    }
+    public NewOrderBean(Object value){
+
     }
     public String getCustlat() {
         return custlat;
@@ -160,4 +166,18 @@ public class NewOrderBean {
     public String getTiming() {
         return timing;
     }
+
+    public String getStorename() {
+        return storename;
+    }
+
+    public String getStoreaddress1() {
+        return storeaddress1;
+    }
+
+    public String getStoreaddress2() {
+        return storeaddress2;
+    }
+
+
 }
