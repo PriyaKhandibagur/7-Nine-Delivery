@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.sevennine.Delivery.R;
 import androidx.annotation.RequiresApi;
@@ -22,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class HomeLandingFragment extends Fragment {
     boolean doubleBackToExitPressedOnce = false;
     Fragment selectedFragment;
+    TextView start_duty;
     public static HomeLandingFragment newInstance() {
         HomeLandingFragment fragment = new HomeLandingFragment();
         return fragment;
@@ -31,6 +33,7 @@ public class HomeLandingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_landing_page, container, false);
+        start_duty=view.findViewById(R.id.start_duty);
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.black));
 
@@ -73,7 +76,15 @@ public class HomeLandingFragment extends Fragment {
 
 
         }*/
-
+        start_duty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedFragment = SearchingOrdersFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.searching_frame, selectedFragment);
+                transaction.commit();
+            }
+        });
 
                 return view;
     }

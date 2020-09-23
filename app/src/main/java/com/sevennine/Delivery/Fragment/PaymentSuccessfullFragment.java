@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -22,7 +23,8 @@ public class PaymentSuccessfullFragment extends Fragment {
 
     LinearLayout got_it,back_feed;
     Fragment selectedFragment;
-    TextView customer_address,customer_name;
+    TextView  customer_address,customer_name,custaddress;
+    SessionManager sessionManager;
     public static PaymentSuccessfullFragment newInstance() {
         PaymentSuccessfullFragment itemOnFragment = new PaymentSuccessfullFragment();
         return itemOnFragment;
@@ -31,7 +33,8 @@ public class PaymentSuccessfullFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.payment_successfull_lay, container, false);
         customer_address=view.findViewById(R.id.customer_address);
-        customer_name=view.findViewById(R.id.customer_name);
+        customer_name=view.findViewById(R.id.cust_name);
+        custaddress=view.findViewById(R.id.cust_address);
         back_feed=view.findViewById(R.id.back_feed);
         got_it=view.findViewById(R.id.got_it);
         // sessionManager = new SessionManager(getActivity());
@@ -58,6 +61,11 @@ public class PaymentSuccessfullFragment extends Fragment {
                 return false;
             }
         });
+        sessionManager=new SessionManager(getActivity());
+
+        custaddress.setText(sessionManager.getRegId("custaddress"));
+        customer_name.setText(sessionManager.getRegId("custname"));
+        customer_address.setText(sessionManager.getRegId("custaddress"));
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,5 +1,6 @@
 package com.sevennine.Delivery.Fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -36,6 +37,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -59,6 +61,7 @@ public class AddressDetailFragment extends Fragment {
         AddressDetailFragment itemOnFragment = new AddressDetailFragment();
         return itemOnFragment;
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.address_detail_item, container, false);
@@ -102,32 +105,26 @@ public class AddressDetailFragment extends Fragment {
             pickupid.setText(" - "+sessionManager.getRegId("pickupid"));
         }
         userId = sessionManager.getRegId("userId");
-
-       /* mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addValueEventListener(new ValueEventListener() {
+        System.out.println("LKJH "+userId);
+//.equalTo(sessionManager.getRegId("orderid"))
+      /*  mProfileRef.child(userId).child("Order Summary").child("-MHQ4YRmmEvftSSiFjy6").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-             *//*   Person order = new Person(dataSnapshot.getValue());*//*
-
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    System.out.println(ds.getValue());
-
-                    ArrayList<Person> ResultList = new ArrayList<>();
-
-                    Person round = (Person) ds.getValue(Person.class);
-                    System.out.println("orderdetails" +round.getCustomeraddress());
-
-                   *//* ResultList.add(round);
-
-                    ivd_HistoryAdapter adapter = new ivd_HistoryAdapter(id_History.this, ResultList);
-                    lv_history.setAdapter(adapter);*//*
-                }
+                System.out.println("Orderrrrr "+dataSnapshot);
+                System.out.println("Orderrrrr 1 "+dataSnapshot.getValue(Person.class).getCustomername());
+                System.out.println("Orderrrrr 2 "+dataSnapshot.getChildren());
+                System.out.println("Orderrrrr 4 "+dataSnapshot.getChildrenCount());
+               // Person order = new Person(dataSnapshot.getValue());
+               *//* for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Person news = postSnapshot.getValue(Person.class);
+                    System.out.println("Orderrrrr 3 "+news.getCustomername());
+                }*//*
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                System.out.println("Orderrrrr err "+databaseError);
             }
 
             // ...

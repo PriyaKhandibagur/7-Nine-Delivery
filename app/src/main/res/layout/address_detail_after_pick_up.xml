@@ -85,6 +85,7 @@
                 android:textStyle="bold"
                 />
             <TextView
+                android:id="@+id/pickupid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/segoeui"
@@ -199,6 +200,7 @@
                     >
 
                     <TextView
+                        android:id="@+id/custname_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/segoeui"

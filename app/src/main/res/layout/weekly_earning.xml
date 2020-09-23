@@ -6,6 +6,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/black">
+
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+
+       >
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          >
+
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -77,7 +89,7 @@
           android:text="Week 17(Current week)"
           android:textColor="@color/grey_text"
           android:textSize="18dp"
-          android:layout_marginLeft="5dp"
+          android:layout_marginLeft="16dp"
           android:textStyle="bold"
 
           />
@@ -86,9 +98,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:padding="12dp"
-          android:layout_marginTop="20dp"
           android:layout_marginBottom="15dp"
-          android:layout_marginHorizontal="10dp"
 
           >
 
@@ -106,7 +116,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
-          android:padding="18dp"
+          android:layout_marginHorizontal="16dp"
           >
 
 
@@ -136,26 +146,12 @@
              android:drawableRight="@drawable/ic_right_angle_arrow"
              />
       </LinearLayout>
-
-      <LinearLayout
+      <FrameLayout
+          android:id="@+id/earnings"
           android:layout_width="match_parent"
-          android:layout_height="0dp"
-          android:orientation="vertical"
-          android:padding="12dp"
-          android:layout_marginTop="20dp"
-          android:layout_marginBottom="15dp"
-          android:layout_marginHorizontal="10dp"
-          android:layout_weight="40">
+          android:layout_height="wrap_content">
 
-         <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/weekly_recy2"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-         </androidx.recyclerview.widget.RecyclerView>
-
-
-      </LinearLayout>
+      </FrameLayout>
 
 
       <LinearLayout
@@ -163,7 +159,7 @@
           android:layout_height="wrap_content"
           android:orientation="vertical"
           android:padding="12dp"
-          android:layout_marginTop="20dp"
+
           android:layout_marginBottom="15dp"
           android:layout_marginHorizontal="10dp"
          >
@@ -188,4 +184,6 @@
 -->
 
    </LinearLayout>
+      </LinearLayout>
+   </androidx.core.widget.NestedScrollView>
 </LinearLayout>

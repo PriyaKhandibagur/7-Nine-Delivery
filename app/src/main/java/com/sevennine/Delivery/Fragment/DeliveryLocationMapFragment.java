@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.directions.route.AbstractRouting;
@@ -40,6 +41,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,10 +72,12 @@ public class DeliveryLocationMapFragment extends Fragment implements OnMapReadyC
     private BottomSheetBehavior mBottomSheetBehavior1;
     View sheetView;
     ImageView map_nav_arrow;
+    TextView customer_address,customer_name;
     private static final int MY_REQUEST_CODE = 7114;
     //to get location permissions.
     private final static int LOCATION_REQUEST_CODE = 23;
     boolean locationPermission = false;
+    SessionManager sessionManager;
     LinearLayout linearLayout,call_instuction;
     //polyline object
     private List<Polyline> polylines = null;
@@ -88,6 +92,8 @@ public class DeliveryLocationMapFragment extends Fragment implements OnMapReadyC
         // sessionManager = new SessionManager(getActivity());
         linearLayout=view.findViewById(R.id.bottom_sheet1);
         call_instuction=view.findViewById(R.id.call_instuction);
+        customer_address=view.findViewById(R.id.cust_address);
+        customer_name=view.findViewById(R.id.cust_name);
         map_nav_arrow=view.findViewById(R.id.map_nav_arrow);
         fab=view.findViewById(R.id.fab);
         Window window = getActivity().getWindow();
@@ -116,6 +122,7 @@ public class DeliveryLocationMapFragment extends Fragment implements OnMapReadyC
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map1);
         mapFragment.getMapAsync(this);
+        sessionManager=new SessionManager(getActivity());
 
         mBottomSheetBehavior1 = BottomSheetBehavior.from(linearLayout);
 
@@ -129,7 +136,8 @@ public class DeliveryLocationMapFragment extends Fragment implements OnMapReadyC
 
 // set hideable or not
         mBottomSheetBehavior1.setHideable(false);
-
+        customer_address.setText(sessionManager.getRegId("custaddress"));
+        customer_name.setText(sessionManager.getRegId("custname"));
 // set callback for changes
 
         mBottomSheetBehavior1.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -220,7 +228,7 @@ public class DeliveryLocationMapFragment extends Fragment implements OnMapReadyC
                 System.out.println("dhjdhlk "+end+","+start);
                 //  mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(start,16));
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
-                        start, 18f);
+                        start, 16f);
                 mMap.animateCamera(cameraUpdate);
 
                 //  String lat = getIntent().getExtras().getString("latidkey");
@@ -235,7 +243,7 @@ public class DeliveryLocationMapFragment extends Fragment implements OnMapReadyC
                     public void onClick(View view) {
                         if(map_nav_arrow.getDrawable().getConstantState().equals(map_nav_arrow.getContext().getDrawable(R.drawable.ic_right_angle_arrow).getConstantState())){
                            map_nav_arrow.setImageResource(R.drawable.map_direction_icon);
-                            call_instuction.setVisibility(View.VISIBLE);
+                           // call_instuction.setVisibility(View.VISIBLE);
                         }else{
                             String uri = "http://maps.google.com/maps?saddr=" + location.getLatitude() + "," + location.getLongitude() + "&daddr=" + 14.6665970992124 + "," + 75.48478469252586;
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));

@@ -56,6 +56,7 @@ import com.sevennine.Delivery.DirectionsJSONParser;
 import com.sevennine.Delivery.DirectionsMapActivity;
 import com.sevennine.Delivery.MainActivity;
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,6 +93,7 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
     protected LatLng start = null;
     protected LatLng end = null;
     Fragment selectedFragment;
+    SessionManager sessionManager;
     private BottomSheetBehavior mBottomSheetBehavior1;
     View sheetView;
     ImageView map_nav_arrow;
@@ -100,6 +102,7 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
     private final static int LOCATION_REQUEST_CODE = 23;
     boolean locationPermission = false;
     LinearLayout linearLayout;
+    TextView store_name,storeaddress,pickupid;
     FloatingActionButton fab;
     //polyline object
     private List<Polyline> polylines = null;
@@ -114,6 +117,9 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
         // sessionManager = new SessionManager(getActivity());
         linearLayout=view.findViewById(R.id.bottom_sheet1);
         map_nav_arrow=view.findViewById(R.id.map_nav_arrow);
+        store_name=view.findViewById(R.id.store_name);
+        storeaddress=view.findViewById(R.id.store_address);
+        pickupid=view.findViewById(R.id.pickupid);
         fab=view.findViewById(R.id.fab);
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
@@ -137,6 +143,8 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
                 return false;
             }
         });
+        sessionManager=new SessionManager(getActivity());
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,7 +172,9 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
 
 // set hideable or not
         mBottomSheetBehavior1.setHideable(false);
-
+        store_name.setText(sessionManager.getRegId("storename"));
+        storeaddress.setText(sessionManager.getRegId("storeaddress"));
+        pickupid.setText(" - "+sessionManager.getRegId("pickupid"));
 // set callback for changes
 
         mBottomSheetBehavior1.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {

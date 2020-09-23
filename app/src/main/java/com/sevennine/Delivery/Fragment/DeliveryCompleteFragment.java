@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -29,7 +30,9 @@ public class DeliveryCompleteFragment extends Fragment {
     LinearLayout linearLayout;
     RatingBar ratingBar;
     String rateValue;
-    TextView customer_address,customer_name,delivery_complete,submit;
+    SessionManager sessionManager;
+    TextView customer_address,customer_name,store_name,store_address;
+    TextView delivery_complete,submit;
     public static DeliveryCompleteFragment newInstance() {
         DeliveryCompleteFragment itemOnFragment = new DeliveryCompleteFragment();
         return itemOnFragment;
@@ -39,13 +42,15 @@ public class DeliveryCompleteFragment extends Fragment {
         View view = inflater.inflate(R.layout.bottomsheet_delivery_rating_layout, container, false);
         customer_address=view.findViewById(R.id.customer_address);
         customer_name=view.findViewById(R.id.customer_name);
+        store_name=view.findViewById(R.id.store_name);
+        store_address=view.findViewById(R.id.store_address);
         reached=view.findViewById(R.id.reached);
         delivery_complete=view.findViewById(R.id.delivery_complete);
         ratingBar=view.findViewById(R.id.ratingBar);
         submit=view.findViewById(R.id.submit);
         back_feed=view.findViewById(R.id.back_feed);
         linearLayout=view.findViewById(R.id.bottom_sheet1);
-        // sessionManager = new SessionManager(getActivity());
+         sessionManager = new SessionManager(getActivity());
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
         view.setFocusableInTouchMode(true);
@@ -68,6 +73,10 @@ public class DeliveryCompleteFragment extends Fragment {
                 return false;
             }
         });
+        customer_name.setText(sessionManager.getRegId("custname"));
+        customer_address.setText(sessionManager.getRegId("custaddress"));
+        store_name.setText(sessionManager.getRegId("storename"));
+        store_address.setText(sessionManager.getRegId("storeaddress"));
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

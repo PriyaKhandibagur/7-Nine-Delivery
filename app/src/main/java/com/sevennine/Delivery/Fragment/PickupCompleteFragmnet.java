@@ -17,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.sevennine.Delivery.Adapter.PickupItemsAdapter;
 import com.sevennine.Delivery.Bean.PickupItemsBean;
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,9 @@ public class PickupCompleteFragmnet extends Fragment {
     LinearLayout linearLayout,back_feed;
     RatingBar ratingBar;
     String rateValue;
-    TextView customer_address,customer_name,submit;
+    TextView customer_address,customer_name,custaddress,pickupid;
+    TextView submit;
+    SessionManager sessionManager;
     public static PickupCompleteFragmnet newInstance() {
         PickupCompleteFragmnet itemOnFragment = new PickupCompleteFragmnet();
         return itemOnFragment;
@@ -50,6 +53,8 @@ public class PickupCompleteFragmnet extends Fragment {
         View view = inflater.inflate(R.layout.bottom_sheet_rating_layout, container, false);
         customer_address=view.findViewById(R.id.customer_address);
         customer_name=view.findViewById(R.id.customer_name);
+        custaddress=view.findViewById(R.id.cust_address);
+        pickupid=view.findViewById(R.id.pickupid);
         pick_up_arrow=view.findViewById(R.id.delivery_arrow);
         pick_up_complete=view.findViewById(R.id.pick_up_complete);
         ratingBar=view.findViewById(R.id.ratingBar);
@@ -80,6 +85,7 @@ public class PickupCompleteFragmnet extends Fragment {
                 return false;
             }
         });
+        sessionManager=new SessionManager(getActivity());
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +93,10 @@ public class PickupCompleteFragmnet extends Fragment {
                 fm.popBackStack();
             }
         });
+        custaddress.setText(sessionManager.getRegId("custaddress"));
+        customer_name.setText(sessionManager.getRegId("custname"));
+        customer_address.setText(sessionManager.getRegId("custaddress"));
+        pickupid.setText(" - "+sessionManager.getRegId("pickupid"));
         mBottomSheetBehavior1 = BottomSheetBehavior.from(linearLayout);
         mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_HIDDEN);
 

@@ -73,6 +73,7 @@ public class WeeklyAdapterRecycle2 extends RecyclerView.Adapter<WeeklyAdapterRec
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
     final Weeklybean2 products = productList.get(position);
+    System.out.println("lksdjjklk "+products.getAmount());
    holder.text.setText(products.getEarnings());
    holder.amount.setText(products.getAmount());
    holder.time.setText(products.getTime());

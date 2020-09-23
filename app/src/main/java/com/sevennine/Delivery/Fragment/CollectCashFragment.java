@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -24,7 +25,9 @@ public class CollectCashFragment extends Fragment {
 
     LinearLayout collect_cash,back_feed;
     Fragment selectedFragment;
-    TextView customer_address,customer_name;
+    TextView customer_address,customer_name,custaddress,collect_cash_title,amount;
+    SessionManager sessionManager;
+
     public static CollectCashFragment newInstance() {
         CollectCashFragment itemOnFragment = new CollectCashFragment();
         return itemOnFragment;
@@ -34,6 +37,9 @@ public class CollectCashFragment extends Fragment {
         View view = inflater.inflate(R.layout.collect_cash_lay, container, false);
         customer_address=view.findViewById(R.id.customer_address);
         customer_name=view.findViewById(R.id.customer_name);
+        collect_cash_title=view.findViewById(R.id.collect_cash_title);
+        amount=view.findViewById(R.id.amount);
+        custaddress=view.findViewById(R.id.cust_address);
         collect_cash=view.findViewById(R.id.collect_cash);
         back_feed=view.findViewById(R.id.back_feed);
         // sessionManager = new SessionManager(getActivity());
@@ -59,6 +65,13 @@ public class CollectCashFragment extends Fragment {
                 return false;
             }
         });
+
+        sessionManager=new SessionManager(getActivity());
+        custaddress.setText(sessionManager.getRegId("custaddress"));
+        customer_name.setText(sessionManager.getRegId("custname"));
+        customer_address.setText(sessionManager.getRegId("custaddress"));
+        collect_cash_title.setText("Collect ₹"+sessionManager.getRegId("totalamount")+" from customer");
+        amount.setText(sessionManager.getRegId("totalamount"));
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +87,10 @@ public class CollectCashFragment extends Fragment {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setCancelable(false);
                 dialog.setContentView(R.layout.collect_cash_popup);
+                final TextView reenter_amount=dialog.findViewById(R.id.reenter_amount);
+                final LinearLayout call_instuction=dialog.findViewById(R.id.call_instuction);
+                final TextView verify_text=dialog.findViewById(R.id.verify_text);
+                final TextView amount=dialog.findViewById(R.id.amount);
                 Window window = dialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 Button collect_cash = (Button) dialog.findViewById(R.id.collect_cash);
@@ -82,12 +99,22 @@ public class CollectCashFragment extends Fragment {
                 collect_cash.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.dismiss();
-                        selectedFragment = PaymentSuccessfullFragment.newInstance();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout1, selectedFragment);
-                        transaction.addToBackStack("dhskswfadkw");
-                        transaction.commit();
+                        if (!(amount.getText().toString().equals(sessionManager.getRegId("totalamount")))){
+                            call_instuction.setVisibility(View.VISIBLE);
+                            verify_text.setText("Enter correct amount");
+                        }else if (!(reenter_amount.getText().toString().equals(amount.getText().toString()))){
+                            call_instuction.setVisibility(View.VISIBLE);
+                            verify_text.setText("Re-Entered amount is not matching with actual amount");
+                        }else{
+                            call_instuction.setVisibility(View.GONE);
+                            dialog.dismiss();
+                            selectedFragment = PaymentSuccessfullFragment.newInstance();
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_layout1, selectedFragment);
+                            transaction.addToBackStack("dhskswfadkw");
+                            transaction.commit();
+                        }
+
 
                     }
                 });

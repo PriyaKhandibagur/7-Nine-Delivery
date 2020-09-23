@@ -219,9 +219,10 @@ public class OrdersListAdapter extends RecyclerView.Adapter<OrdersListAdapter.My
                 // DatabaseReference postsRef = mProfileRef.child("OrderSummary");
                 String key = mProfileRef.child("Order Summary").push().getKey();
                 System.out.println("pushkeyidddd "+key);
-
-               /* mProfileRef.child(userId).child("Order Summary").child(key).setValue(new Person(products.getPayuid(), "Siddivinayaka stores","#201, Siddivinayaka stores, Vidya Nagar Byadgi, near BESM College",store_lat,cust_name,cust_addr,customer_lat,firstmile,lastmile,distance_total,timing,total_amount));
-                sessionManager.saveorderkey(key);*/
+/*Person p = new Person();
+p.setCustomername("Test");
+                mProfileRef.child(userId).child("Order Summary").child(key).setValue(p);*/
+                sessionManager.saveorderkey(key);
                 sessionManager.saveorderdetails(products.getStorename(),holder.store_address.getText().toString(),products.getUsername(),products.getAddr(),products.getProd_price(),products.getLatitude(),products.getLongitude(),products.getCustlat(),products.getCustlong(),products.getPayuid());
 
               //  String mGroupId = mProfileRef.child("Order Summary").getKey();
