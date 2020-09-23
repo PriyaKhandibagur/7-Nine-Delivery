@@ -127,6 +127,7 @@ static Fragment myloadingfragment;
                     } else {
                         switch_duty.setOn(false);
                     }
+
                 }
             }
 

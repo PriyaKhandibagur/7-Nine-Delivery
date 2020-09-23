@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -22,7 +23,8 @@ public class AddressDetailAfterPickupFragment extends Fragment {
 
     LinearLayout pick_up_arrow,back_feed,reached_loc;
     Fragment selectedFragment;
-    TextView customer_address,customer_name;
+    SessionManager sessionManager;
+    TextView customer_address,customer_name,store_name,store_address,pickupid,cust_name_title;
     public static AddressDetailAfterPickupFragment newInstance() {
         AddressDetailAfterPickupFragment itemOnFragment = new AddressDetailAfterPickupFragment();
         return itemOnFragment;
@@ -32,10 +34,16 @@ public class AddressDetailAfterPickupFragment extends Fragment {
         View view = inflater.inflate(R.layout.address_detail_after_pick_up, container, false);
         customer_address=view.findViewById(R.id.customer_address);
         customer_name=view.findViewById(R.id.customer_name);
+        pick_up_arrow=view.findViewById(R.id.pick_up_arrow);
+        store_name=view.findViewById(R.id.store_name);
+        store_address=view.findViewById(R.id.store_address);
+        cust_name_title=view.findViewById(R.id.custname_title);
+        pickupid=view.findViewById(R.id.pickupid);
         pick_up_arrow=view.findViewById(R.id.delivery_arrow);
         back_feed=view.findViewById(R.id.back_feed);
         reached_loc=view.findViewById(R.id.reached_loc);
         // sessionManager = new SessionManager(getActivity());
+        sessionManager=new SessionManager(getActivity());
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
         view.setFocusableInTouchMode(true);
@@ -65,6 +73,12 @@ public class AddressDetailAfterPickupFragment extends Fragment {
                 fm.popBackStack ("asdfg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+        customer_name.setText(sessionManager.getRegId("custname"));
+        customer_address.setText(sessionManager.getRegId("custaddress"));
+        store_name.setText(sessionManager.getRegId("storename"));
+        store_address.setText(sessionManager.getRegId("storeaddress"));
+        cust_name_title.setText(sessionManager.getRegId("custname"));
+        pickupid.setText(" - "+sessionManager.getRegId("pickupid"));
         reached_loc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

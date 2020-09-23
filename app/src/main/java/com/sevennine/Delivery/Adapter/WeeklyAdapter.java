@@ -11,10 +11,16 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sevennine.Delivery.Bean.PickupItemsBean;
 import com.sevennine.Delivery.Bean.Weeklybean;
+import com.sevennine.Delivery.Fragment.EarningsFragment;
+import com.sevennine.Delivery.Fragment.HomeFragment;
+import com.sevennine.Delivery.Fragment.InsentivesFragment;
+import com.sevennine.Delivery.Fragment.WeeklyEarningsDetails;
 import com.sevennine.Delivery.R;
 import com.sevennine.Delivery.SessionManager;
 
@@ -76,21 +82,78 @@ public class WeeklyAdapter extends RecyclerView.Adapter<WeeklyAdapter.MyViewHold
    holder.text.setText(products.getEarnings());
    holder.amount.setText(products.getAmount());
 
-
-
+        Bundle bundle=new Bundle();
+        bundle.putString("TotalEarnings","Total");
+        selectedFragment = EarningsFragment.newInstance();
+        FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.earnings, selectedFragment);
+        selectedFragment.setArguments(bundle);
+        transaction.commit();
 
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 products.getId();
-
-
-
-                holder.text.setTextColor(Color.parseColor("#fff"));
-                holder.amount.setTextColor(Color.parseColor("#fff"));
-
                 holder.layout.setBackgroundResource(R.drawable.border_empty_curve);
+                holder.text.setTextColor(Color.parseColor("#000000"));
+                holder.amount.setTextColor(Color.parseColor("#000000"));
+                switch (products.getId()){
+                    case "1":
+                        Bundle bundle=new Bundle();
+                        bundle.putString("TotalEarnings","Total");
+                        selectedFragment = EarningsFragment.newInstance();
+                        FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.earnings, selectedFragment);
+                        selectedFragment.setArguments(bundle);
+                        transaction.commit();
+                      /*  WeeklyEarningsDetails.recyclerView2.setVisibility(View.VISIBLE);
+
+                        WeeklyEarningsDetails.madapter2=new WeeklyAdapterRecycle2(activity,WeeklyEarningsDetails.newOrderBeansList2);
+                        WeeklyEarningsDetails.recyclerView2.setAdapter(WeeklyEarningsDetails.madapter2);*/
+                        break;
+                    case "2":
+                        selectedFragment = EarningsFragment.newInstance();
+                        FragmentTransaction transaction1= ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                        transaction1.replace(R.id.earnings, selectedFragment);
+                        transaction1.commit();
+                       /* WeeklyEarningsDetails.recyclerView2.setVisibility(View.VISIBLE);
+
+                        WeeklyEarningsDetails.madapter2=new WeeklyAdapterRecycle2(activity,WeeklyEarningsDetails.newOrderBeansList_next);
+                        WeeklyEarningsDetails.recyclerView2.setAdapter(WeeklyEarningsDetails.madapter2);*/
+                        break;
+                    case "3":
+                       // WeeklyEarningsDetails.recyclerView2.setVisibility(View.GONE);
+                        selectedFragment = InsentivesFragment.newInstance();
+                        FragmentTransaction transaction3 = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                        transaction3.replace(R.id.earnings, selectedFragment);
+                        transaction3.commit();
+                        break;
+                    case "4":
+
+                        break;
+                    default:
+                }
+                /*if (products.getId().equals("1")){
+                    holder.layout.setBackgroundResource(R.drawable.border_empty_curve);
+                    holder.text.setTextColor(Color.parseColor("#000000"));
+                    holder.amount.setTextColor(Color.parseColor("#000000"));
+                    WeeklyEarningsDetails.madapter2=new WeeklyAdapterRecycle2(activity,WeeklyEarningsDetails.newOrderBeansList2);
+                    WeeklyEarningsDetails.recyclerView2.setAdapter(WeeklyEarningsDetails.madapter2);
+                }else if (products.getId().equals("2")){
+                    WeeklyEarningsDetails.madapter2=new WeeklyAdapterRecycle2(activity,WeeklyEarningsDetails.newOrderBeansList2);
+                    WeeklyEarningsDetails.recyclerView2.setAdapter(WeeklyEarningsDetails.madapter2);
+                }else if (products.getId().equals("3")){
+                    WeeklyEarningsDetails.madapter2=new WeeklyAdapterRecycle2(activity,WeeklyEarningsDetails.newOrderBeansList2);
+                    WeeklyEarningsDetails.recyclerView2.setAdapter(WeeklyEarningsDetails.madapter2);
+                }else{
+
+
+                }
+*/
+
+
+               // holder.layout.setBackgroundResource(R.drawable.border_empty_curve);
                // .setBackgroundResource(R.drawable.black_bordr_white_filled1);
 
             }

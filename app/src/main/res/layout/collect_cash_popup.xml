@@ -110,6 +110,39 @@
             android:textColor="@color/black"
             android:textSize="16dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            >
+
+        <LinearLayout
+            android:id="@+id/call_instuction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@drawable/border_deli_instru_bag_filled_curve"
+            android:layout_marginHorizontal="10dp"
+            android:padding="5dp"
+            >
+            <TextView
+                android:id="@+id/verify_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text="Call me once you reached. Don't ring bell"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
         <Button
             android:id="@+id/collect_cash"
             android:layout_width="match_parent"
@@ -117,10 +150,9 @@
             android:background="@drawable/border_blue_filled_curve"
             android:text="CASH COLLECTED"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp"
             android:textColor="@color/white" />
     </LinearLayout>
-
+    </LinearLayout>
 
 
 

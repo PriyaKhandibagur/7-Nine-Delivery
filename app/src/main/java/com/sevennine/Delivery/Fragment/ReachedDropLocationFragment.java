@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -22,7 +23,8 @@ public class ReachedDropLocationFragment extends Fragment {
 
     LinearLayout reached,back_feed;
     Fragment selectedFragment;
-    TextView customer_address,customer_name;
+    SessionManager sessionManager;
+    TextView customer_address,customer_name,store_name,store_address;
     public static ReachedDropLocationFragment newInstance() {
         ReachedDropLocationFragment itemOnFragment = new ReachedDropLocationFragment();
         return itemOnFragment;
@@ -32,9 +34,11 @@ public class ReachedDropLocationFragment extends Fragment {
         View view = inflater.inflate(R.layout.reached_drop_loc, container, false);
         customer_address=view.findViewById(R.id.customer_address);
         customer_name=view.findViewById(R.id.customer_name);
+        store_name=view.findViewById(R.id.store_name);
+        store_address=view.findViewById(R.id.store_address);
         back_feed=view.findViewById(R.id.back_feed);
         reached=view.findViewById(R.id.reached);
-        // sessionManager = new SessionManager(getActivity());
+        sessionManager = new SessionManager(getActivity());
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
         view.setFocusableInTouchMode(true);
@@ -57,6 +61,10 @@ public class ReachedDropLocationFragment extends Fragment {
                 return false;
             }
         });
+        customer_name.setText(sessionManager.getRegId("custname"));
+        customer_address.setText(sessionManager.getRegId("custaddress"));
+        store_name.setText(sessionManager.getRegId("storename"));
+        store_address.setText(sessionManager.getRegId("storeaddress"));
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

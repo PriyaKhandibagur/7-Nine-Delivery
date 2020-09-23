@@ -37,14 +37,13 @@ import java.util.List;
 //Our class extending fragment
 public class WeeklyEarningsDetails extends Fragment {
     public static WeeklyAdapter madapter;
-    public static WeeklyAdapterRecycle2 madapter2;
     public static WeeklyAdapterRecyc3 madapter3;
     public static List<Weeklybean> newOrderBeansList = new ArrayList<>();
-    public static List<Weeklybean2> newOrderBeansList2 = new ArrayList<>();
+
     public static List<Weeklybean3> newOrderBeansList3= new ArrayList<>();
     LinearLayout back_feed;
     Fragment selectedFragment;
-    RecyclerView recyclerView,recyclerView2,recyclerView3;
+    public static RecyclerView recyclerView,recyclerView2,recyclerView3;
 
     public static WeeklyEarningsDetails newInstance() {
         WeeklyEarningsDetails itemOnFragment = new WeeklyEarningsDetails();
@@ -56,7 +55,6 @@ public class WeeklyEarningsDetails extends Fragment {
         View view = inflater.inflate(R.layout.weekly_earning, container, false);
 
         recyclerView=view.findViewById(R.id.weekly_recy);
-        recyclerView2=view.findViewById(R.id.weekly_recy2);
         recyclerView3=view.findViewById(R.id.weekly_recy3);
         back_feed=view.findViewById(R.id.back_feed);
         // sessionManager = new SessionManager(getActivity());
@@ -113,27 +111,16 @@ public class WeeklyEarningsDetails extends Fragment {
 ////////////////////////////recycle2//////////////////////////
 
 
-        newOrderBeansList2.clear();
-        GridLayoutManager mLayoutManager_farm2 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
-        recyclerView2.setLayoutManager(mLayoutManager_farm2);
-        recyclerView2.setItemAnimator(new DefaultItemAnimator());
-
-        Weeklybean2 weeklybean5=new Weeklybean2("₹98","Silkboard","6.30PM","Delivered");
-        newOrderBeansList2.add(weeklybean5);
-
-        Weeklybean2 weeklybean6=new Weeklybean2("₹53","jaynagr","6.30PM","Delivered");
-        newOrderBeansList2.add(weeklybean6);
 
 
-        Weeklybean2 weeklybean7=new Weeklybean2("₹65","Silkboard","6.30PM","Delivered");
-        newOrderBeansList2.add(weeklybean7);
+
 
        /* Weeklybean3 weeklybean3=new Weeklybean3("₹30","Adjustments");
         newOrderBeansList3.add(weeklybean3);*/
 
-        madapter2=new WeeklyAdapterRecycle2(getActivity(),newOrderBeansList2);
+      /*  madapter2=new WeeklyAdapterRecycle2(getActivity(),newOrderBeansList2);
         recyclerView2.setAdapter(madapter2);
-
+*/
 
 
 

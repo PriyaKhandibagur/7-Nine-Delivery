@@ -98,14 +98,17 @@ public class OrdersFragment extends Fragment implements SwipeRefreshLayout.OnRef
         });
 
        // gpsTracker = new GPSTracker(getActivity());
-        newOrderBeansList.clear();
+       // newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        madapter=new OrdersListAdapter(getActivity(),newOrderBeansList);
+        System.out.println("kjsdskjhks "+SearchingOrdersFragment.newOrderBeansList);
+        madapter=new OrdersListAdapter(getActivity(),SearchingOrdersFragment.newOrderBeansList);
         recyclerView.setAdapter(madapter);
-        Newdata();
-
+      //  Newdata();
+       /* madapter=new OrdersListAdapter(getActivity(),newOrderBeansList);
+        recyclerView.setAdapter(madapter);*/
+        madapter.notifyDataSetChanged();
         return view;
         
     }
@@ -159,9 +162,7 @@ public  void  Newdata(){
                                                 newOrderBeansList.add(bean);
 
                                             }
-                                            madapter=new OrdersListAdapter(getActivity(),newOrderBeansList);
-                                            recyclerView.setAdapter(madapter);
-                                            madapter.notifyDataSetChanged();
+
                                         }
 
                                     }catch (Exception e){

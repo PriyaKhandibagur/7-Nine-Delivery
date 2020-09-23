@@ -16,6 +16,7 @@ import com.sevennine.Delivery.Adapter.PickupItemsAdapter;
 import com.sevennine.Delivery.Bean.NewOrderBean;
 import com.sevennine.Delivery.Bean.PickupItemsBean;
 import com.sevennine.Delivery.R;
+import com.sevennine.Delivery.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,8 @@ public class PickupConfirmationFragment extends Fragment {
     LinearLayout pick_up_arrow,proceed_conf,back_feed;
     Fragment selectedFragment;
     RecyclerView recyclerView;
-    TextView customer_address,customer_name;
+    SessionManager sessionManager;
+    TextView customer_address,customer_name,custaddress,payment_amt;
     public static PickupConfirmationFragment newInstance() {
         PickupConfirmationFragment itemOnFragment = new PickupConfirmationFragment();
         return itemOnFragment;
@@ -48,6 +50,9 @@ public class PickupConfirmationFragment extends Fragment {
         pick_up_arrow=view.findViewById(R.id.delivery_arrow);
         recyclerView=view.findViewById(R.id.items_recy);
         proceed_conf=view.findViewById(R.id.proceed_conf);
+        back_feed=view.findViewById(R.id.back_feed);
+        payment_amt=view.findViewById(R.id.payment_amt);
+        custaddress=view.findViewById(R.id.cust_address);
         back_feed=view.findViewById(R.id.back_feed);
         // sessionManager = new SessionManager(getActivity());
         Window window = getActivity().getWindow();
@@ -72,6 +77,7 @@ public class PickupConfirmationFragment extends Fragment {
                 return false;
             }
         });
+        sessionManager=new SessionManager(getActivity());
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +85,10 @@ public class PickupConfirmationFragment extends Fragment {
                 fm.popBackStack();
             }
         });
+        custaddress.setText(sessionManager.getRegId("custaddress"));
+        customer_name.setText(sessionManager.getRegId("custname"));
+        customer_address.setText(sessionManager.getRegId("custaddress"));
+        payment_amt.setText("Pay ₹"+sessionManager.getRegId("totalamount")+" to Store");
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);

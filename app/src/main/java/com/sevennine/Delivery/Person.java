@@ -4,28 +4,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class Person {
 
-    String orderId,storename,storeaddress,customername,customeraddress,firstmile,lastmile,distance,timeestimation,totalamount;
-    LatLng storelatlang,custlatlang;
-
-    public Person(String orderId, String storename, String storeaddress, LatLng storelatlang,String customername,String customeraddress,LatLng custlatlang,String firstmile,String lastmile,String distance,String timeestimation,String totalamount) {
-
-        this.orderId = orderId;
-        this.storename = storename;
-        this.storeaddress = storeaddress;
-        this.storelatlang = storelatlang;
-        this.customername = customername;
-        this.customeraddress = customeraddress;
-        this.custlatlang = custlatlang;
-        this.firstmile = firstmile;
-        this.lastmile = lastmile;
-        this.distance = distance;
-        this.timeestimation = timeestimation;
-        this.totalamount = totalamount;
-
-    }
-
-    public Person() {
-    }
+    String orderId, storename, storeaddress, customername, customeraddress, firstmile, lastmile, distance, timeestimation, totalamount;
+    Object storelatlang;
 
     public String getOrderId() {
         return orderId;
@@ -107,20 +87,12 @@ public class Person {
         this.totalamount = totalamount;
     }
 
-    public LatLng getStorelatlang() {
+    public Object getStorelatlang() {
         return storelatlang;
     }
 
-    public void setStorelatlang(LatLng storelatlang) {
+    public void setStorelatlang(Object storelatlang) {
         this.storelatlang = storelatlang;
-    }
-
-    public LatLng getCustlatlang() {
-        return custlatlang;
-    }
-
-    public void setCustlatlang(LatLng custlatlang) {
-        this.custlatlang = custlatlang;
     }
 }
 
