@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:fitsSystemWindows="true"
+       android:layout_gravity="center_vertical"
+       android:gravity="center_vertical"
+       android:padding="10dp"
+       >
+
+      <!--<android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:minHeight="?attr/actionBarSize"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:titleTextColor="@android:color/white"
+          android:background="@color/green"
+          >
+-->
+      <LinearLayout
+          android:id="@+id/back_feed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:padding="10dp"
+          android:background="@drawable/ripple_effect"
+          android:layout_marginLeft="5dp"
+          android:layout_marginTop="5dp"
+          >
+
+         <ImageView
+             android:layout_width="20dp"
+             android:layout_height="20dp"
+             android:layout_gravity="center_vertical"
+             android:src="@drawable/ic_close"
+             android:background="?attr/selectableItemBackgroundBorderless"
+
+             />
+
+      </LinearLayout>
+
+
+
+   </LinearLayout>
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="#fff"
+       android:orientation="vertical"
+       android:weightSum="100">
+
+      <LinearLayout
+          android:id="@+id/profile_layout"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="30"
+          android:orientation="vertical"
+          android:paddingHorizontal="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/image_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:src="@drawable/avatarmale"
+                android:layout_gravity="center"
+                app:civ_border_color="#fff"
+                app:civ_border_width="1dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/segoeui"
+                android:gravity="center"
+                android:text="Keerthana"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/segoeui"
+                android:gravity="center"
+                android:text="1067"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+      </LinearLayout>
+
+
+         <!--
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginBottom="-10dp"
+
+           >
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:fontFamily="@font/segoeui"
+               android:text="@string/Earnings"
+               android:textColor="@color/white"
+               android:textSize="16dp" />
+
+       </LinearLayout>
+-->
+
+
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="20dp"
+          android:orientation="vertical"
+          android:layout_weight="50"
+
+          >
+
+
+         <EditText
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginTop="6dp"
+             android:background="@drawable/border_empty_rectangle"
+             android:fontFamily="@font/segoeui"
+             android:gravity="center"
+
+             android:textColor="@color/black"
+             android:textSize="16dp" />
+
+
+      </LinearLayout>
+
+
+      <LinearLayout
+          android:id="@+id/got_it"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:background="@drawable/border_blue_filled_curve"
+          android:gravity="center"
+          android:padding="12dp"
+          android:layout_marginTop="40dp"
+          android:layout_marginBottom="15dp"
+          android:layout_marginHorizontal="15dp"
+          android:layout_weight="10"
+          >
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/segoeui"
+             android:text="DONE"
+             android:layout_gravity="center_vertical"
+             android:textColor="@color/white"
+             android:textSize="16dp"
+             android:layout_marginLeft="5dp"
+             android:gravity="center_vertical"
+             android:textStyle="bold"
+             />
+
+
+      </LinearLayout>
+
+
+
+   </LinearLayout>
+</LinearLayout>

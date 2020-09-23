@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/border_profile_filled_curve"
+    >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:fitsSystemWindows="true"
+       android:layout_gravity="center_vertical"
+       android:gravity="center_vertical"
+       android:padding="10dp"
+       >
+
+
+      <LinearLayout
+          android:id="@+id/back_feed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:padding="10dp"
+          android:background="@drawable/ripple_effect"
+          android:layout_marginLeft="5dp"
+          android:layout_marginTop="5dp"
+          >
+
+         <ImageView
+             android:layout_width="20dp"
+             android:layout_height="20dp"
+             android:layout_gravity="center_vertical"
+             android:src="@drawable/ic_go_back_left_arrow_"
+             android:background="?attr/selectableItemBackgroundBorderless"
+
+             />
+
+      </LinearLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="PROFILE"
+          android:textSize="20dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginHorizontal="15dp"
+          android:fontFamily="@font/segoeui"
+          android:textColor="#fff"
+          android:id="@+id/lang_title" />
+
+      <!--
+                </android.support.v7.widget.Toolbar>
+      -->
+
+   </LinearLayout>
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:weightSum="100"
+       android:orientation="vertical"
+       android:background="@drawable/border_profile_box_filled_curve"
+       >
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Service Details"
+          android:textSize="16dp"
+          android:layout_marginLeft="20dp"
+          android:fontFamily="@font/segoeui"
+          android:textColor="@color/grey_text"
+          />
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:background="@color/black"
+       android:layout_below="@id/profile_layout"
+       >
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_marginHorizontal="20dp"
+
+          >
+
+
+          <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:paddingVertical="15dp"
+             android:layout_gravity="center_vertical"
+             >
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Name"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             />
+
+             <TextView
+                 android:id="@+id/earning"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="Keerthana"
+                 android:textSize="16dp"
+                 android:layout_marginLeft="20dp"
+                 android:fontFamily="@font/segoeui"
+                 android:layout_marginTop="10dp"
+                 android:textColor="#fff"
+                 />
+
+
+
+
+         </LinearLayout>
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DE ID"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="@color/grey_text"
+                />
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="1026"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="#fff"
+             android:layout_marginTop="10dp"
+             />
+
+
+
+
+            <TextView
+                android:id="@+id/rewards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="7-Nine Moibile Number"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="@color/grey_text"
+                android:layout_marginTop="10dp"
+                />
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="99806071825"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="#fff"
+             android:layout_marginTop="10dp"
+             />
+
+
+
+
+            <TextView
+                android:id="@+id/login_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Joining Date"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="@color/grey_text"
+                android:textAllCaps="true"
+                android:layout_marginTop="10dp"
+                />
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Dec 10 2019"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="#fff"
+             android:layout_marginTop="10dp"
+             />
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Service Zone"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             android:textAllCaps="true"
+             android:layout_marginTop="10dp"
+             />
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Bangalore"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="#fff"
+             android:layout_marginTop="10dp"
+             />
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Fleet Manager"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             android:textAllCaps="true"
+             android:layout_marginTop="10dp"
+             />
+
+
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:background="@color/seperator"
+             android:layout_marginTop="10dp"
+             />
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Emergency Details"
+             android:textSize="16dp"
+             android:layout_marginTop="15dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             android:textAllCaps="true"
+             />
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="20dp"
+             android:layout_marginTop="10dp"
+             android:fontFamily="@font/segoeui"
+             android:text="Emergency Contact"
+             android:textAllCaps="true"
+             android:textColor="@color/grey_text"
+             android:textSize="16dp" />
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="1234567890"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="#fff"
+             android:layout_marginTop="10dp"
+             />
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Blood Group"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             android:textAllCaps="true"
+             android:layout_marginTop="10dp"
+             />
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="B+"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="#fff"
+             android:layout_marginTop="10dp"
+             />
+
+
+
+
+
+      </LinearLayout>
+
+   </ScrollView>
+   </LinearLayout>
+</LinearLayout>

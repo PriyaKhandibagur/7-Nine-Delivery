@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/border_profile_filled_curve"
+    >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:fitsSystemWindows="true"
+       android:layout_gravity="center_vertical"
+       android:gravity="center_vertical"
+       android:padding="10dp"
+       >
+
+      <!--<android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:minHeight="?attr/actionBarSize"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:titleTextColor="@android:color/white"
+          android:background="@color/green"
+          >
+-->
+      <LinearLayout
+          android:id="@+id/back_feed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:padding="10dp"
+          android:background="@drawable/ripple_effect"
+          android:layout_marginLeft="5dp"
+          android:layout_marginTop="5dp"
+          >
+
+         <ImageView
+             android:layout_width="20dp"
+             android:layout_height="20dp"
+             android:layout_gravity="center_vertical"
+             android:src="@drawable/ic_go_back_left_arrow_"
+             android:background="?attr/selectableItemBackgroundBorderless"
+
+             />
+
+      </LinearLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Earning and incentives"
+          android:textSize="20dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginHorizontal="15dp"
+          android:fontFamily="@font/segoeui"
+          android:textColor="#fff"
+          android:textAllCaps="true"
+          android:id="@+id/lang_title" />
+
+      <!--
+                </android.support.v7.widget.Toolbar>
+      -->
+
+   </LinearLayout>
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:weightSum="100"
+       android:orientation="vertical"
+       android:background="@drawable/border_profile_box_filled_curve"
+       >
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:orientation="vertical"
+          android:background="@drawable/border_blue_filled_curve"
+          android:padding="12dp"
+          android:layout_marginTop="40dp"
+          android:layout_marginBottom="15dp"
+          android:layout_marginHorizontal="10dp"
+          android:layout_weight="18"
+
+          >
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:weightSum="20">
+
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/segoeui"
+             android:text="Week 17(Current Week)"
+             android:textColor="@color/white"
+             android:textSize="16dp"
+             android:layout_marginLeft="5dp"
+             android:textStyle="bold"
+             android:layout_weight="14"
+             />
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/segoeui"
+             android:text="@string/text1"
+             android:textColor="@color/white"
+             android:textSize="16dp"
+             android:textStyle="bold"
+             android:layout_weight="6"
+             android:gravity="left"
+             android:layout_marginRight="10dp"
+             android:drawableRight="@drawable/ic_right_angle_arrow"
+             />
+         </LinearLayout>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/segoeui"
+             android:text="30 Apr -  5 Sep"
+             android:textColor="@color/white"
+             android:textSize="16dp"
+             android:textStyle="bold"
+             android:layout_weight="10"
+             android:layout_marginLeft="5dp"
+             />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:orientation="vertical"
+          android:padding="12dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="15dp"
+          android:layout_marginHorizontal="10dp"
+          android:layout_weight="18"
+
+          >
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:weightSum="20">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text="Last Week"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:layout_weight="14"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text="@string/text2"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_weight="6"
+                android:gravity="left"
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/ic_right_angle_arrow"
+                />
+         </LinearLayout>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/segoeui"
+             android:text="23 Apr -  29 Apr"
+             android:textColor="@color/white"
+             android:textSize="16dp"
+             android:textStyle="bold"
+             android:layout_weight="6"
+             android:layout_marginLeft="5dp"
+             />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:orientation="vertical"
+          android:padding="12dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="15dp"
+          android:layout_marginHorizontal="10dp"
+          android:layout_weight="18"
+
+          >
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:weightSum="20">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text="Week 15"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:layout_weight="14"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text="@string/text3"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_weight="6"
+                android:gravity="left"
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/ic_right_angle_arrow"
+                />
+         </LinearLayout>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/segoeui"
+             android:text="16 Apr -  22 Apr"
+             android:textColor="@color/white"
+             android:textSize="16dp"
+             android:textStyle="bold"
+             android:layout_weight="6"
+             android:layout_marginLeft="5dp"
+             />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:orientation="vertical"
+          android:padding="12dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="15dp"
+          android:layout_marginHorizontal="10dp"
+          android:layout_weight="18"
+
+          >
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:weightSum="20">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text="Week 14"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:layout_weight="14"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text="@string/text2"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_weight="6"
+                android:gravity="left"
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/ic_right_angle_arrow"
+                />
+         </LinearLayout>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/segoeui"
+             android:text="9 Apr -  15 Apr"
+             android:textColor="@color/white"
+             android:textSize="16dp"
+             android:textStyle="bold"
+             android:layout_weight="6"
+             android:layout_marginLeft="5dp"
+             />
+      </LinearLayout>
+
+
+
+   </LinearLayout>
+</LinearLayout>

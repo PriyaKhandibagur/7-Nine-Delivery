@@ -11,60 +11,30 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.sevennine.Delivery.R;
-
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
+import com.sevennine.Delivery.R;
 
 //Our class extending fragment
-public class ProfileFragment extends Fragment {
+public class PersonalDetailsFragment extends Fragment {
 
     LinearLayout pick_up_arrow,back_feed,reached_loc;
     Fragment selectedFragment;
-    TextView customer_address,customer_name,personal_details,bank_details;
-    public static ProfileFragment newInstance() {
-        ProfileFragment itemOnFragment = new ProfileFragment();
+    TextView customer_address,customer_name;
+
+    public static PersonalDetailsFragment newInstance() {
+        PersonalDetailsFragment itemOnFragment = new PersonalDetailsFragment();
         return itemOnFragment;
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.profile, container, false);
+        View view = inflater.inflate(R.layout.personal_details, container, false);
         back_feed=view.findViewById(R.id.back_feed);
-        personal_details=view.findViewById(R.id.personaldetails);
-        bank_details=view.findViewById(R.id.bankdetails);
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
-
-
-        personal_details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedFragment = PersonalDetailsFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout1, selectedFragment);
-                transaction.commit();
-
-            }
-        });
-
-
-        bank_details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedFragment = BankDetails.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout1, selectedFragment);
-                transaction.commit();
-
-            }
-        });
-
-
-
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -89,7 +59,5 @@ public class ProfileFragment extends Fragment {
         return view;
         
     }
-
-
 
 }

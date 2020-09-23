@@ -220,7 +220,7 @@
                 android:src="@drawable/email"
                 />
          <TextView
-             android:id="@+id/earning"
+             android:id="@+id/personaldetails"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text="Personal Details"
@@ -244,7 +244,7 @@
                 android:src="@drawable/email"
                 />
             <TextView
-                android:id="@+id/floating_cash"
+                android:id="@+id/bankdetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Personal Savings Account"
