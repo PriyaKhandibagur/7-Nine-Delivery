@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/border_profile_filled_curve"
+    >
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:padding="18dp"
+       android:layout_marginTop="10dp"
+       android:layout_marginBottom="10dp"
+       >
+
+
+      <TextView
+          android:id="@+id/texttt"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/segoeui"
+          android:text="Fri,28 Apr(3)"
+          android:textColor="@color/white"
+          android:textSize="16dp"
+          android:layout_marginLeft="5dp"
+          android:textStyle="bold"
+          android:layout_weight="14"
+          />
+
+      <TextView
+          android:id="@+id/amountt"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/segoeui"
+          android:text="@string/text4"
+          android:textColor="@color/white"
+          android:textSize="16dp"
+          android:textStyle="bold"
+          android:layout_weight="6"
+          android:gravity="left"
+          android:layout_marginRight="10dp"
+
+          />
+   </LinearLayout>
+
+
+</LinearLayout>

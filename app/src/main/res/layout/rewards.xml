@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/border_profile_filled_curve"
+    android:weightSum="100"
+    >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:fitsSystemWindows="true"
+       android:layout_gravity="center_vertical"
+       android:gravity="center_vertical"
+       android:padding="10dp"
+       android:background="#FF9800"
+
+       >
+
+      <!--<android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:minHeight="?attr/actionBarSize"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:titleTextColor="@android:color/white"
+          android:background="@color/green"
+          >
+-->
+      <LinearLayout
+          android:id="@+id/back_feed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:padding="10dp"
+          android:background="@drawable/ripple_effect"
+          android:layout_marginLeft="5dp"
+          android:layout_marginTop="5dp"
+          >
+
+         <ImageView
+             android:layout_width="20dp"
+             android:layout_height="20dp"
+             android:layout_gravity="center_vertical"
+             android:src="@drawable/ic_go_back_left_arrow_"
+             android:background="?attr/selectableItemBackgroundBorderless"
+
+             />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:orientation="horizontal"
+          android:weightSum="20"
+          >
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="10"
+          android:text="REWARDS"
+          android:textSize="20dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginHorizontal="15dp"
+          android:fontFamily="@font/segoeui"
+          android:textColor="#fff"
+          android:id="@+id/lang_title" />
+
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="10"
+             android:layout_marginHorizontal="15dp"
+             android:layout_marginTop="5dp"
+             android:fontFamily="@font/segoeui"
+             android:gravity="right"
+             android:text="how it works?"
+             android:textColor="#fff"
+             android:textSize="18dp" />
+      </LinearLayout>
+      <!--
+                </android.support.v7.widget.Toolbar>
+      -->
+
+   </LinearLayout>
+
+
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:weightSum="100"
+       android:orientation="vertical"
+       android:background="@drawable/border_profile_box_filled_curve"
+       >
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:background="#FF9800"
+          android:layout_weight="10">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginHorizontal="35dp"
+             android:layout_marginTop="25dp"
+             android:fontFamily="@font/segoeui"
+             android:text="@string/text5"
+             android:textColor="@color/black"
+             android:textSize="40dp" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/segoeui"
+             android:text="Total Rewards"
+             android:textColor="@color/black"
+             android:layout_marginLeft="40dp"
+             android:gravity="center"
+             android:textSize="20dp" />
+
+
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="12dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="15dp"
+          android:layout_marginHorizontal="10dp"
+
+          >
+
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/reward_recy"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+         </androidx.recyclerview.widget.RecyclerView>
+
+
+      </LinearLayout>
+
+
+   </LinearLayout>
+</LinearLayout>
