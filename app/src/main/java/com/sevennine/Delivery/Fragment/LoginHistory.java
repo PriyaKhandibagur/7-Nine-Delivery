@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +33,7 @@ public class LoginHistory extends Fragment {
     public static LoginHistoryAdapter madapter3;
 
     public static List<Weeklybean3> newOrderBeansList3= new ArrayList<>();
-    LinearLayout back_feed;
+    LinearLayout back_feed,today;
     Fragment selectedFragment;
     RecyclerView recyclerView3;
 
@@ -48,9 +49,21 @@ public class LoginHistory extends Fragment {
 
         recyclerView3=view.findViewById(R.id.lrecy);
         back_feed=view.findViewById(R.id.back_feed);
+        today=view.findViewById(R.id.linearLayout1);
         // sessionManager = new SessionManager(getActivity());
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = HomeFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("dhsksw");
+                transaction.commit();
+            }
+        });
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -59,23 +72,14 @@ public class LoginHistory extends Fragment {
                 Log.i("ONBACK", "keyCodezzzzzzzzzq  : " + keyCode);
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     Log.i("ONBACK", "onKey Back listener is working!!!");
-                   /* selectedFragment = AddressDetailFragment.newInstance();
+                    selectedFragment = HomeFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
-                    transaction.addToBackStack("dhskswa");
-                    transaction.commit();*/
-                    FragmentManager fm = getFragmentManager();
-                    fm.popBackStack();
+                    transaction.addToBackStack("dhsksw");
+                    transaction.commit();
                     return true;
                 }
                 return false;
-            }
-        });
-        back_feed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fm = getFragmentManager();
-                fm.popBackStack();
             }
         });
 
@@ -115,15 +119,15 @@ public class LoginHistory extends Fragment {
 
 
 
-       /* pick_up_arrow.setOnClickListener(new View.OnClickListener() {
+        today.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedFragment = PickupLocationMapFragment.newInstance();
+                selectedFragment = WeeklyloginHistory.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.replace(R.id.frame_layout1, selectedFragment);
                 transaction.commit();
             }
-        });*/
+        });
         return view;
         
     }

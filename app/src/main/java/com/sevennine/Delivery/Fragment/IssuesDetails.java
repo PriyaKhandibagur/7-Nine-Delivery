@@ -39,7 +39,7 @@ public class IssuesDetails extends Fragment {
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
 
 
-        issueid.setOnClickListener(new View.OnClickListener() {
+        /*issueid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectedFragment = FloatingCash.newInstance();
@@ -48,9 +48,20 @@ public class IssuesDetails extends Fragment {
                 transaction.commit();
 
             }
+        });*/
+
+
+
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = ProfileFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("dhsksw");
+                transaction.commit();
+            }
         });
-
-
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -60,19 +71,16 @@ public class IssuesDetails extends Fragment {
                 Log.i("ONBACK", "keyCodezzzzzzzzzq  : " + keyCode);
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     Log.i("ONBACK", "onKey Back listener is working!!!");
-
+                    selectedFragment = ProfileFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.addToBackStack("dhsksw");
+                    transaction.commit();
                     return true;
                 }
                 return false;
             }
         });
-        back_feed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
         return view;
         
     }

@@ -24,7 +24,7 @@ public class ProfileFragment extends Fragment {
 
     LinearLayout pick_up_arrow,back_feed,reached_loc;
     Fragment selectedFragment;
-    TextView customer_address,customer_name,personal_details,bank_details;
+    TextView id_card,customer_address,customer_name,personal_details,bank_details,issue_details;
     public static ProfileFragment newInstance() {
         ProfileFragment itemOnFragment = new ProfileFragment();
         return itemOnFragment;
@@ -36,6 +36,10 @@ public class ProfileFragment extends Fragment {
         back_feed=view.findViewById(R.id.back_feed);
         personal_details=view.findViewById(R.id.personaldetails);
         bank_details=view.findViewById(R.id.bankdetails);
+        id_card=view.findViewById(R.id.idcard);
+        issue_details=view.findViewById(R.id.issue);
+
+
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
 
@@ -62,8 +66,37 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+        id_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = SevenNine_Id.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.commit();
 
+            }
+        });
+        issue_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = IssuesDetails.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.commit();
 
+            }
+        });
+
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = HomeFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("dhsksw");
+                transaction.commit();
+            }
+        });
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -73,19 +106,16 @@ public class ProfileFragment extends Fragment {
                 Log.i("ONBACK", "keyCodezzzzzzzzzq  : " + keyCode);
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     Log.i("ONBACK", "onKey Back listener is working!!!");
-
+                    selectedFragment = HomeFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.addToBackStack("dhsksw");
+                    transaction.commit();
                     return true;
                 }
                 return false;
             }
         });
-        back_feed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
         return view;
         
     }

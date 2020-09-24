@@ -64,13 +64,13 @@ import androidx.fragment.app.FragmentTransaction;
 public class HomeFragment extends Fragment implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 Fragment selectedFragment;
     public static DrawerLayout drawer;
-    ImageView search;
+    ImageView search,notification;
     LinearLayout menu,profile_arrow;
     LabeledSwitch switch_duty;
     String userid;
     public static String switch_on;
     SessionManager sessionManager;
-    TextView refer,earning_incentives,home,logout,search_by_cat,disc_store,my_orders,list_prod,inventory,account,store,offers,payments,notification;
+    TextView help,login_history,rewards,floating_cash,refer,earning_incentives,home,logout,search_by_cat,disc_store,my_orders,list_prod,inventory,account,store,offers,payments;
     public static TextView cart_count_text,user_name_menu;
 static boolean fragloaded;
     boolean doubleBackToExitPressedOnce = false;
@@ -96,6 +96,11 @@ static Fragment myloadingfragment;
         profile_arrow=view.findViewById(R.id.profile_arrow);
         earning_incentives=view.findViewById(R.id.earning);
         refer=view.findViewById(R.id.refer);
+        floating_cash=view.findViewById(R.id.floating_cash);
+        rewards=view.findViewById(R.id.rewards);
+        login_history=view.findViewById(R.id.login_history);
+        notification=view.findViewById(R.id.noti);
+        help=view.findViewById(R.id.help);
       //  shop_cat=view.findViewById(R.id.shop_cat);
       //  disc_store=view.findViewById(R.id.disc_store);
         drawer =view.findViewById(R.id.drawer_layout1);
@@ -313,7 +318,40 @@ static Fragment myloadingfragment;
                 earning_incentives.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        selectedFragment = WeeklyEarningsDetails.newInstance();
+                        selectedFragment = EarningAndIncentives.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.commit();
+                        drawer.closeDrawers();
+                    }
+                });
+
+                floating_cash.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedFragment = FloatingCash.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.commit();
+                        drawer.closeDrawers();
+                    }
+                });
+
+                rewards.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedFragment = RewardsDetails.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.commit();
+                        drawer.closeDrawers();
+                    }
+                });
+
+                login_history.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedFragment = LoginHistory.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout1, selectedFragment);
                         transaction.commit();
@@ -325,6 +363,17 @@ static Fragment myloadingfragment;
                     @Override
                     public void onClick(View view) {
                         selectedFragment = RefernEarn.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.commit();
+                        drawer.closeDrawers();
+                    }
+                });
+
+                help.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedFragment = HelpFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout1, selectedFragment);
                         transaction.commit();

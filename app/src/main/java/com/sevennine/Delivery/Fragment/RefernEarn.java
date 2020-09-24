@@ -40,7 +40,7 @@ public class RefernEarn extends Fragment {
 
 
 
-        refer.setOnClickListener(new View.OnClickListener() {
+       /* refer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectedFragment = IssuesDetails.newInstance();
@@ -49,8 +49,19 @@ public class RefernEarn extends Fragment {
                 transaction.commit();
 
             }
-        });
+        });*/
 
+
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = HomeFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("dhsksw");
+                transaction.commit();
+            }
+        });
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -60,19 +71,16 @@ public class RefernEarn extends Fragment {
                 Log.i("ONBACK", "keyCodezzzzzzzzzq  : " + keyCode);
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     Log.i("ONBACK", "onKey Back listener is working!!!");
-
+                    selectedFragment = HomeFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.addToBackStack("dhsksw");
+                    transaction.commit();
                     return true;
                 }
                 return false;
             }
         });
-        back_feed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
         return view;
         
     }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sevennine.Delivery.Bean.PickupItemsBean;
 import com.sevennine.Delivery.Bean.Weeklybean;
+import com.sevennine.Delivery.Fragment.Adjustmentfragment;
 import com.sevennine.Delivery.Fragment.EarningsFragment;
 import com.sevennine.Delivery.Fragment.HomeFragment;
 import com.sevennine.Delivery.Fragment.InsentivesFragment;
@@ -130,7 +131,10 @@ public class WeeklyAdapter extends RecyclerView.Adapter<WeeklyAdapter.MyViewHold
                         transaction3.commit();
                         break;
                     case "4":
-
+                        selectedFragment = Adjustmentfragment.newInstance();
+                        FragmentTransaction transaction4 = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                        transaction4.replace(R.id.earnings, selectedFragment);
+                        transaction4.commit();
                         break;
                     default:
                 }

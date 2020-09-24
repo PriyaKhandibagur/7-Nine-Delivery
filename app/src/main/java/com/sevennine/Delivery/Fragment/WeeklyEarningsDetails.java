@@ -68,13 +68,13 @@ public class WeeklyEarningsDetails extends Fragment {
                 Log.i("ONBACK", "keyCodezzzzzzzzzq  : " + keyCode);
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     Log.i("ONBACK", "onKey Back listener is working!!!");
-                   /* selectedFragment = AddressDetailFragment.newInstance();
+                    selectedFragment = EarningAndIncentives.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
                     transaction.addToBackStack("dhskswa");
-                    transaction.commit();*/
-                    FragmentManager fm = getFragmentManager();
-                    fm.popBackStack();
+                    transaction.commit();
+                  /*  FragmentManager fm = getFragmentManager();
+                    fm.popBackStack();*/
                     return true;
                 }
                 return false;
@@ -83,8 +83,11 @@ public class WeeklyEarningsDetails extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fm = getFragmentManager();
-                fm.popBackStack();
+                selectedFragment = EarningAndIncentives.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("dhskswa");
+                transaction.commit();
             }
         });
         newOrderBeansList.clear();

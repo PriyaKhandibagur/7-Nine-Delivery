@@ -19,38 +19,34 @@ import androidx.fragment.app.FragmentTransaction;
 import com.sevennine.Delivery.R;
 
 //Our class extending fragment
-public class FloatingCash extends Fragment {
+public class EarningAndIncentives extends Fragment {
 
-    LinearLayout linearLayout,back_feed,reached_loc;
+    LinearLayout pick_up_arrow,back_feed,reached_loc,earning_layout;
     Fragment selectedFragment;
     TextView customer_address,customer_name,personal_details,bank_details;
-    public static FloatingCash newInstance() {
-        FloatingCash itemOnFragment = new FloatingCash();
+    public static EarningAndIncentives newInstance() {
+        EarningAndIncentives itemOnFragment = new EarningAndIncentives();
         return itemOnFragment;
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.floatingcash, container, false);
-        back_feed=view.findViewById(R.id.back_feed);
-        linearLayout=view.findViewById(R.id.linearLayout1);
-        bank_details=view.findViewById(R.id.bankdetails);
+        View view = inflater.inflate(R.layout.earningandinsentivies, container, false);
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
 
+        earning_layout=view.findViewById(R.id.earning_lay);
+        back_feed=view.findViewById(R.id.back_feed);
 
-       /* linearLayout.setOnClickListener(new View.OnClickListener() {
+        earning_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedFragment = IssueIdComment.newInstance();
+                selectedFragment = WeeklyEarningsDetails.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
                 transaction.commit();
-
             }
-        });*/
-
-
+        });
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

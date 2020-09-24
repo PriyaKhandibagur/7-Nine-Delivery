@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/border_profile_filled_curve"
+    android:background="#fff"
+
     >
 
 
@@ -14,7 +15,6 @@
        android:layout_height="wrap_content"
        android:weightSum="100"
        android:orientation="vertical"
-       android:background="@drawable/border_empty_curve"
        >
 
       <LinearLayout
@@ -60,8 +60,9 @@
              android:textSize="16dp"
              android:textStyle="bold"
              android:layout_weight="10"
-             android:gravity="right"
+             android:gravity="left"
              android:layout_marginRight="10dp"
+             android:drawableRight="@drawable/ic_right_angle_arrow"
              />
          </LinearLayout>
 
@@ -91,11 +92,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/segoeui"
                 android:text="@string/floating"
-                android:textColor="@color/black"
+                android:textColor="#61A064"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:layout_weight="10"
-                android:gravity="right"
+
                 android:layout_marginRight="10dp"
                 />
          </LinearLayout>

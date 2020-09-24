@@ -27,7 +27,7 @@
           android:textSize="16dp"
           android:layout_marginLeft="5dp"
           android:textStyle="bold"
-          android:layout_weight="14"
+          android:layout_weight="16"
           />
 
       <TextView

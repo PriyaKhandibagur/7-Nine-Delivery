@@ -19,36 +19,28 @@ import androidx.fragment.app.FragmentTransaction;
 import com.sevennine.Delivery.R;
 
 //Our class extending fragment
-public class FloatingCash extends Fragment {
+public class HelpFragment extends Fragment {
 
-    LinearLayout linearLayout,back_feed,reached_loc;
+    LinearLayout pick_up_arrow,back_feed,reached_loc;
     Fragment selectedFragment;
-    TextView customer_address,customer_name,personal_details,bank_details;
-    public static FloatingCash newInstance() {
-        FloatingCash itemOnFragment = new FloatingCash();
+    TextView id_card,customer_address,customer_name,personal_details,bank_details,issue_details;
+    public static HelpFragment newInstance() {
+        HelpFragment itemOnFragment = new HelpFragment();
         return itemOnFragment;
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.floatingcash, container, false);
+        View view = inflater.inflate(R.layout.help, container, false);
         back_feed=view.findViewById(R.id.back_feed);
-        linearLayout=view.findViewById(R.id.linearLayout1);
+        personal_details=view.findViewById(R.id.personaldetails);
         bank_details=view.findViewById(R.id.bankdetails);
+        id_card=view.findViewById(R.id.idcard);
+        issue_details=view.findViewById(R.id.issue);
+
+
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
-
-
-       /* linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedFragment = IssueIdComment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout1, selectedFragment);
-                transaction.commit();
-
-            }
-        });*/
 
 
 
@@ -81,7 +73,6 @@ public class FloatingCash extends Fragment {
                 return false;
             }
         });
-
         return view;
         
     }

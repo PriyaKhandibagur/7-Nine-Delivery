@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/card_color"
+    >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:fitsSystemWindows="true"
+       android:layout_gravity="center_vertical"
+       android:gravity="center_vertical"
+       android:padding="10dp"
+       >
+
+
+      <LinearLayout
+          android:id="@+id/back_feed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:padding="10dp"
+          android:background="@drawable/ripple_effect"
+          android:layout_marginLeft="5dp"
+          android:layout_marginTop="5dp"
+          >
+
+         <ImageView
+             android:layout_width="20dp"
+             android:layout_height="20dp"
+             android:layout_gravity="center_vertical"
+             android:src="@drawable/ic_go_back_left_arrow_"
+             android:background="?attr/selectableItemBackgroundBorderless"
+
+             />
+
+      </LinearLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="HELP"
+          android:textSize="20dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginHorizontal="15dp"
+          android:fontFamily="@font/segoeui"
+          android:textColor="#fff"
+          android:id="@+id/lang_title" />
+
+      <!--
+                </android.support.v7.widget.Toolbar>
+      -->
+
+   </LinearLayout>
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:weightSum="100"
+       android:orientation="vertical"
+       android:background="@drawable/border_profile_box_filled_curve"
+       >
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Transaction Related"
+          android:textSize="18dp"
+          android:layout_marginLeft="5dp"
+          android:fontFamily="@font/segoeui"
+          android:textColor="@color/white"
+          />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="15dp"
+                android:layout_gravity="center_vertical"
+                >
+
+               <TextView
+
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Transaction Issue"
+                   android:textSize="16dp"
+                   android:layout_marginLeft="20dp"
+                   android:fontFamily="@font/segoeui"
+                   android:textColor="@color/grey_text"
+                   android:layout_marginRight="10dp"
+                   android:drawableRight="@drawable/ic_right_angle_arrow"
+                   />
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Other Topics"
+                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="@color/white"
+                />
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:paddingVertical="15dp"
+          android:layout_gravity="center_vertical"
+          >
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Security"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             android:layout_marginRight="10dp"
+             android:drawableRight="@drawable/ic_right_angle_arrow"
+             />
+
+
+
+
+
+
+      </LinearLayout>
+
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:paddingVertical="15dp"
+          android:layout_gravity="center_vertical"
+          >
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Privacy"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             android:layout_marginRight="10dp"
+             android:drawableRight="@drawable/ic_right_angle_arrow"
+             />
+
+
+
+
+
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:paddingVertical="15dp"
+          android:layout_gravity="center_vertical"
+          >
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Payment"
+             android:textSize="16dp"
+             android:layout_marginLeft="20dp"
+             android:fontFamily="@font/segoeui"
+             android:textColor="@color/grey_text"
+             android:layout_marginRight="10dp"
+             android:drawableRight="@drawable/ic_right_angle_arrow"
+             />
+
+
+
+
+
+
+      </LinearLayout>
+
+
+         </LinearLayout>
+
+
+</LinearLayout>

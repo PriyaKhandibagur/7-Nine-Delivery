@@ -41,6 +41,17 @@ public class BankDetails extends Fragment {
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
 
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = ProfileFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("dhsksw");
+                transaction.commit();
+            }
+        });
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -49,23 +60,14 @@ public class BankDetails extends Fragment {
                 Log.i("ONBACK", "keyCodezzzzzzzzzq  : " + keyCode);
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     Log.i("ONBACK", "onKey Back listener is working!!!");
-                   /* selectedFragment = AddressDetailFragment.newInstance();
+                    selectedFragment = ProfileFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
-                    transaction.addToBackStack("dhskswa");
-                    transaction.commit();*/
-                    FragmentManager fm = getFragmentManager();
-                    fm.popBackStack();
+                    transaction.addToBackStack("dhsksw");
+                    transaction.commit();
                     return true;
                 }
                 return false;
-            }
-        });
-        back_feed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fm = getFragmentManager();
-                fm.popBackStack();
             }
         });
 
