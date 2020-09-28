@@ -127,6 +127,7 @@
           android:layout_marginHorizontal="20dp"
           android:orientation="vertical"
           android:layout_weight="50"
+          android:padding="20dp"
 
           >
 
@@ -137,8 +138,6 @@
              android:layout_marginTop="6dp"
              android:background="@drawable/border_empty_rectangle"
              android:fontFamily="@font/segoeui"
-             android:gravity="center"
-
              android:textColor="@color/black"
              android:textSize="16dp" />
 

@@ -35,7 +35,7 @@
             android:name="firebase_crashlytics_collection_enabled"
             android:value="true" />
 
-        <activity android:name="CustomAuthLoginActivity">
+        <activity android:name=".Activity.LandingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,7 +53,7 @@
             android:hardwareAccelerated="true" />
         <activity android:name=".OrdersActivity" />
         <activity android:name=".StoreDeliveryLocationDetails" />
-        <activity android:name=".Activity.LandingPage" />
+        <activity android:name=".CustomAuthLoginActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".DirectionsMapCustomerActivity"

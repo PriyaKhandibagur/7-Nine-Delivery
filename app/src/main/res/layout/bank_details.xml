@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/card_color"
+    android:background="@color/black"
     >
    <LinearLayout
        android:layout_width="match_parent"
@@ -60,7 +60,7 @@
        android:layout_height="match_parent"
        android:weightSum="100"
        android:orientation="vertical"
-       android:background="@drawable/border_profile_box_filled_curve"
+       android:background="@color/black"
        >
 
       <TextView
@@ -71,6 +71,8 @@
           android:layout_marginLeft="20dp"
           android:fontFamily="@font/segoeui"
           android:textColor="@color/grey_text"
+          android:layout_marginTop="10dp"
+          android:textAllCaps="true"
           />
 
    <ScrollView
@@ -87,6 +89,7 @@
           android:orientation="vertical"
           android:layout_marginHorizontal="20dp"
 
+
           >
 
 
@@ -96,6 +99,7 @@
              android:orientation="vertical"
              android:paddingVertical="15dp"
              android:layout_gravity="center_vertical"
+
              >
 
          <TextView
@@ -108,6 +112,7 @@
              android:fontFamily="@font/segoeui"
              android:textColor="@color/grey_text"
              android:textAllCaps="true"
+             android:layout_marginTop="10dp"
              />
 
              <TextView
@@ -118,7 +123,7 @@
                  android:textSize="16dp"
                  android:layout_marginLeft="20dp"
                  android:fontFamily="@font/segoeui"
-                 android:layout_marginTop="10dp"
+                 android:layout_marginTop="20dp"
                  android:textColor="#fff"
                  />
 
@@ -150,7 +155,7 @@
              android:layout_marginLeft="20dp"
              android:fontFamily="@font/segoeui"
              android:textColor="#fff"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="20dp"
              />
 
 
@@ -165,7 +170,7 @@
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/segoeui"
                 android:textColor="@color/grey_text"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:textAllCaps="true"
                 />
 
@@ -178,7 +183,7 @@
              android:layout_marginLeft="20dp"
              android:fontFamily="@font/segoeui"
              android:textColor="#fff"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="20dp"
              />
 
 
@@ -194,7 +199,7 @@
                 android:fontFamily="@font/segoeui"
                 android:textColor="@color/grey_text"
                 android:textAllCaps="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 />
          <TextView
 
@@ -205,7 +210,7 @@
              android:layout_marginLeft="20dp"
              android:fontFamily="@font/segoeui"
              android:textColor="#fff"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="20dp"
              />
 
          <TextView
@@ -218,7 +223,7 @@
              android:fontFamily="@font/segoeui"
              android:textColor="@color/grey_text"
              android:textAllCaps="true"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="20dp"
              />
          <TextView
 
@@ -229,17 +234,17 @@
              android:layout_marginLeft="20dp"
              android:fontFamily="@font/segoeui"
              android:textColor="#fff"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="20dp"
              />
 
 
 
-         <View
+        <!-- <View
              android:layout_width="match_parent"
              android:layout_height="1dp"
              android:background="@color/seperator"
              android:layout_marginTop="10dp"
-             />
+             />-->
 
          <TextView
 
@@ -247,7 +252,7 @@
              android:layout_height="wrap_content"
              android:text="UPI Payment details"
              android:textSize="16dp"
-             android:layout_marginTop="15dp"
+             android:layout_marginTop="25dp"
              android:fontFamily="@font/segoeui"
              android:textColor="@color/grey_text"
              android:textAllCaps="true"
@@ -258,9 +263,9 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_marginLeft="20dp"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="20dp"
              android:fontFamily="@font/segoeui"
-             android:text="Persnolup handle"
+             android:text="Persnalup handle"
              android:textAllCaps="true"
              android:textColor="@color/grey_text"
              android:textSize="16dp" />
@@ -274,7 +279,7 @@
              android:layout_marginLeft="20dp"
              android:fontFamily="@font/segoeui"
              android:textColor="#fff"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="20dp"
              />
 
 

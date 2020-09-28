@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/card_color"
+    android:background="@color/black"
     >
    <LinearLayout
        android:layout_width="match_parent"
@@ -60,7 +60,7 @@
        android:layout_height="match_parent"
        android:weightSum="100"
        android:orientation="vertical"
-       android:background="@drawable/border_profile_box_filled_curve"
+       android:background="@color/black"
        >
 
       <TextView
@@ -71,6 +71,7 @@
           android:layout_marginLeft="5dp"
           android:fontFamily="@font/segoeui"
           android:textColor="@color/white"
+          android:layout_marginTop="20dp"
           />
 
 
@@ -93,6 +94,7 @@
                    android:fontFamily="@font/segoeui"
                    android:textColor="@color/grey_text"
                    android:layout_marginRight="10dp"
+                   android:layout_marginTop="20dp"
                    android:drawableRight="@drawable/ic_right_angle_arrow"
                    />
 
@@ -114,6 +116,7 @@
                 android:layout_marginLeft="5dp"
                 android:fontFamily="@font/segoeui"
                 android:textColor="@color/white"
+                android:layout_marginTop="20dp"
                 />
 
 
@@ -135,6 +138,7 @@
              android:fontFamily="@font/segoeui"
              android:textColor="@color/grey_text"
              android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
              android:drawableRight="@drawable/ic_right_angle_arrow"
              />
 
@@ -165,6 +169,7 @@
              android:fontFamily="@font/segoeui"
              android:textColor="@color/grey_text"
              android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
              android:drawableRight="@drawable/ic_right_angle_arrow"
              />
 
@@ -193,6 +198,7 @@
              android:fontFamily="@font/segoeui"
              android:textColor="@color/grey_text"
              android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
              android:drawableRight="@drawable/ic_right_angle_arrow"
              />
 
