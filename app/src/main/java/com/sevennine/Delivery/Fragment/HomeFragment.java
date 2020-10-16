@@ -4,6 +4,7 @@ package com.sevennine.Delivery.Fragment;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.github.angads25.toggle.LabeledSwitch;
 import com.github.angads25.toggle.interfaces.OnToggledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,12 +37,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.sevennine.Delivery.Activity.LandingPage;
 import com.sevennine.Delivery.Bean.DutyStatusBean;
+import com.sevennine.Delivery.Bean.User;
 import com.sevennine.Delivery.CustomAuthLoginActivity;
 import com.sevennine.Delivery.Person;
 import com.sevennine.Delivery.R;
 import com.sevennine.Delivery.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -60,22 +66,29 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.sevennine.Delivery.general.AppConstants.DEFAULT_PROFILE_PIC_DIRECTORY;
+import static com.sevennine.Delivery.general.AppConstants.DEFAULT_PROFILE_PIC_NAME;
+import static com.sevennine.Delivery.general.FirebaseConstants.TABLE_USERS;
 
 public class HomeFragment extends Fragment implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
-Fragment selectedFragment;
+    Fragment selectedFragment;
     public static DrawerLayout drawer;
-    ImageView search,notification;
+    ImageView search;
     LinearLayout menu,profile_arrow;
     LabeledSwitch switch_duty;
     String userid;
     public static String switch_on;
     SessionManager sessionManager;
-    TextView help,login_history,rewards,floating_cash,refer,earning_incentives,home,logout,search_by_cat,disc_store,my_orders,list_prod,inventory,account,store,offers,payments;
+    TextView help,refer,earning_incentives,home,logout,floating_cash,login_history,rewards,my_orders,list_prod,inventory,account,store,offers,payments,notification;
     public static TextView cart_count_text,user_name_menu;
-static boolean fragloaded;
+    static boolean fragloaded;
     boolean doubleBackToExitPressedOnce = false;
     JSONArray storelist;
-static Fragment myloadingfragment;
+    static Fragment myloadingfragment;
+    ImageView map;
+    CircleImageView image_acc;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference mProfileRef = firebaseDatabase.getReference();
@@ -96,13 +109,15 @@ static Fragment myloadingfragment;
         profile_arrow=view.findViewById(R.id.profile_arrow);
         earning_incentives=view.findViewById(R.id.earning);
         refer=view.findViewById(R.id.refer);
+        map=view.findViewById(R.id.map);
         floating_cash=view.findViewById(R.id.floating_cash);
         rewards=view.findViewById(R.id.rewards);
         login_history=view.findViewById(R.id.login_history);
-        notification=view.findViewById(R.id.noti);
         help=view.findViewById(R.id.help);
-      //  shop_cat=view.findViewById(R.id.shop_cat);
-      //  disc_store=view.findViewById(R.id.disc_store);
+        image_acc=view.findViewById(R.id.image_acc);
+        user_name_menu=view.findViewById(R.id.user_name_menu);
+        //  shop_cat=view.findViewById(R.id.shop_cat);
+        //  disc_store=view.findViewById(R.id.disc_store);
         drawer =view.findViewById(R.id.drawer_layout1);
 
         Window window = getActivity().getWindow();
@@ -116,8 +131,8 @@ static Fragment myloadingfragment;
         NavigationView navigationView = (NavigationView)view.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-         userId = user.getUid();
-         sessionManager.saveuserid(userId);
+        userId = user.getUid();
+        sessionManager.saveuserid(userId);
 
 
         mProfileRef.child(userId).child("Duty Status").orderByChild("dutyOn").addChildEventListener(new ChildEventListener() {
@@ -128,8 +143,11 @@ static Fragment myloadingfragment;
                     System.out.println("status_on " + duty.isDutyOn());
 
                     if (duty.isDutyOn() == true) {
+                        switch_duty.setColorOn(Color.parseColor("#00BF6F"));
                         switch_duty.setOn(true);
                     } else {
+                      //  switch_duty.set
+                        switch_duty.setColorOn(Color.parseColor("#9F9F9F"));
                         switch_duty.setOn(false);
                     }
 
@@ -210,13 +228,13 @@ static Fragment myloadingfragment;
                 transaction.addToBackStack("dhskswacdw");
                 selectedFragment.setArguments(address_bundle);
                 transaction.commit();
-            }else if (getArguments().getString("delivery_map_status")!=null){
+            }/*else if (getArguments().getString("delivery_map_status")!=null){
                 selectedFragment = DeliveryLocationMapFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout_home, selectedFragment);
                 transaction.addToBackStack("dhskswfadw");
                 transaction.commit();
-            } else {
+            }*/ else {
                 selectedFragment = HomeLandingFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout_home, selectedFragment);
@@ -228,17 +246,26 @@ static Fragment myloadingfragment;
             transaction.replace(R.id.frame_layout_home, selectedFragment);
             transaction.commit();
         }
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedFragment = MapZoneClusterFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.commit();
+            }
+        });
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("uuuuuuiiidd "+userId);
-               // drawer_layout =view.findViewById(R.id.drawer_layout1);
+                // drawer_layout =view.findViewById(R.id.drawer_layout1);
                 drawer.openDrawer(GravityCompat.START);
                 switch_duty.setOnToggledListener(new OnToggledListener() {
                     @Override
                     public void onSwitched(LabeledSwitch labeledSwitch, boolean isOn) {
                         if (switch_duty.isOn()) {
-
+                            switch_duty.setColorOn(Color.parseColor("#00BF6F"));
                             mProfileRef.child(userId).child("Duty Status").setValue(new DutyStatusBean(true));
                            /* DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                             Date date = new Date();
@@ -267,6 +294,8 @@ static Fragment myloadingfragment;
 
                             dialog.show();
                         }else{
+                            switch_duty.setColorOn(Color.parseColor("#9F9F9F"));
+
                             mProfileRef.child(userId).child("Duty Status").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -302,6 +331,36 @@ static Fragment myloadingfragment;
                                 });
                     }
                 });
+                StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+                storageReference.child("EUsa0q4TyXY3B027u4NmALKoBXs1").child(DEFAULT_PROFILE_PIC_DIRECTORY).child(DEFAULT_PROFILE_PIC_NAME)
+                        .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).fit().centerInside().into(image_acc);
+                    }
+                });
+                DatabaseReference databaseReference = firebaseDatabase.getReference("EUsa0q4TyXY3B027u4NmALKoBXs1");
+
+                if(userId!=null) {
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            User userProfile = dataSnapshot.child(TABLE_USERS).getValue(User.class);
+
+                            user_name_menu.setText(userProfile.getFirstName());
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // onError(databaseError.getMessage());
+                            Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+
+                }
 
                 profile_arrow.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -325,7 +384,6 @@ static Fragment myloadingfragment;
                         drawer.closeDrawers();
                     }
                 });
-
                 floating_cash.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -358,7 +416,6 @@ static Fragment myloadingfragment;
                         drawer.closeDrawers();
                     }
                 });
-
                 refer.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -369,7 +426,6 @@ static Fragment myloadingfragment;
                         drawer.closeDrawers();
                     }
                 });
-
                 help.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

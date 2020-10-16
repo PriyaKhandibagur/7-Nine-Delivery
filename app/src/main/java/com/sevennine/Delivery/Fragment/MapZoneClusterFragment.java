@@ -3,26 +3,20 @@ package com.sevennine.Delivery.Fragment;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.InputFilter;
-import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,34 +38,26 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.sevennine.Delivery.Activity.LandingPage;
-import com.sevennine.Delivery.DirectionsJSONParser;
-import com.sevennine.Delivery.DirectionsMapActivity;
-import com.sevennine.Delivery.MainActivity;
+import com.google.maps.android.clustering.ClusterManager;
+import com.sevennine.Delivery.Bean.ClusterBean;
+import com.sevennine.Delivery.Bean.NewOrderBean;
 import com.sevennine.Delivery.R;
 import com.sevennine.Delivery.SessionManager;
+import com.sevennine.Delivery.Urls;
+import com.sevennine.Delivery.Volly_class.Crop_Post;
+import com.sevennine.Delivery.Volly_class.VoleyJsonObjectCallback;
 
-import org.json.JSONException;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -82,7 +68,7 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.Context.LOCATION_SERVICE;
 
 //Our class extending fragment
-public class PickupLocationMapFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener, RoutingListener {
+public class MapZoneClusterFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener, RoutingListener {
 
     private GoogleMap mMap;
     private LocationManager mLocationManager;
@@ -93,34 +79,31 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
     protected LatLng start = null;
     protected LatLng end = null;
     Fragment selectedFragment;
-    SessionManager sessionManager;
     private BottomSheetBehavior mBottomSheetBehavior1;
     View sheetView;
     ImageView map_nav_arrow;
+    TextView customer_address,customer_name;
     private static final int MY_REQUEST_CODE = 7114;
     //to get location permissions.
     private final static int LOCATION_REQUEST_CODE = 23;
     boolean locationPermission = false;
-    LinearLayout linearLayout;
-    TextView store_name,storeaddress,pickupid;
-    ImageView fab;
+    SessionManager sessionManager;
+    LinearLayout linearLayout,call_instuction;
     //polyline object
     private List<Polyline> polylines = null;
-
-    public static PickupLocationMapFragment newInstance() {
-        PickupLocationMapFragment itemOnFragment = new PickupLocationMapFragment();
+    ImageView fab;
+    public static List<NewOrderBean> newOrderBeansList = new ArrayList<>();
+    private ClusterManager<ClusterBean> clusterManager;
+    JSONArray jsonArray;
+    String cust_lat,cust_lang,store_lat,store_lang;
+    public static MapZoneClusterFragment newInstance() {
+        MapZoneClusterFragment itemOnFragment = new MapZoneClusterFragment();
         return itemOnFragment;
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bottom_sheet_main_layout, container, false);
+        View view = inflater.inflate(R.layout.activity_maps, container, false);
         // sessionManager = new SessionManager(getActivity());
-        linearLayout=view.findViewById(R.id.bottom_sheet1);
-        map_nav_arrow=view.findViewById(R.id.map_nav_arrow);
-        store_name=view.findViewById(R.id.store_name);
-        storeaddress=view.findViewById(R.id.store_address);
-        pickupid=view.findViewById(R.id.pickupid);
-        fab=view.findViewById(R.id.fab);
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
         view.setFocusableInTouchMode(true);
@@ -131,28 +114,16 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
                 Log.i("ONBACK", "keyCodezzzzzzzzzq  : " + keyCode);
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     Log.i("ONBACK", "onKey Back listener is working!!!");
-                   /* selectedFragment = AddressDetailFragment.newInstance();
+                    selectedFragment = HomeFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
                     transaction.addToBackStack("dhskswa");
-                    transaction.commit();*/
-                    FragmentManager fm = getFragmentManager();
-                    fm.popBackStack();
+                    transaction.commit();
+                   /* FragmentManager fm = getFragmentManager();
+                    fm.popBackStack();*/
                     return true;
                 }
                 return false;
-            }
-        });
-        sessionManager=new SessionManager(getActivity());
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectedFragment = AddressDetailAfterPickupFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout1, selectedFragment);
-                transaction.addToBackStack("asdfg");
-                transaction.commit();
             }
         });
         requestPermision();
@@ -160,36 +131,8 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map1);
         mapFragment.getMapAsync(this);
 
-        mBottomSheetBehavior1 = BottomSheetBehavior.from(linearLayout);
-
-
-        mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_EXPANDED);
-        mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_HIDDEN);
-
-// set the peek height
-        mBottomSheetBehavior1.setPeekHeight(500);
-
-// set hideable or not
-        mBottomSheetBehavior1.setHideable(false);
-        store_name.setText(sessionManager.getRegId("storename"));
-        storeaddress.setText(sessionManager.getRegId("storeaddress"));
-        pickupid.setText(" - "+sessionManager.getRegId("pickupid"));
-// set callback for changes
-
-        mBottomSheetBehavior1.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-
-            }
-
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
-            }
-        });
         return view;
-        
+
     }
 
 
@@ -197,8 +140,56 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        getMyLocation();
+       // getMyLocation();
+        setUpClusterManager(googleMap);
 
+
+    }
+
+    private void setUpClusterManager(GoogleMap googleMap){
+        clusterManager = new ClusterManager(getActivity(), googleMap);
+        googleMap.setOnCameraIdleListener(clusterManager);
+        getMyLocation();
+      //  List<ClusterBean> items = getItems();
+        try{
+            newOrderBeansList.clear();
+            final JSONObject jsonObject = new JSONObject();
+            //  jsonObject.put("UserId",sessionManager.getRegId("userId"));
+            System.out.println("GetOrderslist"+jsonObject);
+            Crop_Post.post_no_load(getActivity(), Urls.GetOrderslist, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("iGetOrderslistdetails"+result);
+                    try{
+                        jsonArray = result.getJSONArray("orderfromcart");
+                        for(int i=0;i<jsonArray.length();i++){
+                            final JSONObject jsonObject_main_1 = jsonArray.getJSONObject(i);
+                            cust_lat=jsonObject_main_1.getString("CustLatitude");
+                            cust_lang=jsonObject_main_1.getString("CustLongitude");
+                            store_lat=jsonObject_main_1.getString("Latitude");
+                            store_lang=jsonObject_main_1.getString("Longitude");
+                            double lat=Double.parseDouble(store_lat);
+                            double lang=Double.parseDouble(store_lang);
+                            // Create a cluster item for the marker and set the title and snippet using the constructor.
+                            ClusterBean infoWindowItem = new ClusterBean(lat, lang, "1");
+
+// Add the cluster item (marker) to the cluster manager.
+                            clusterManager.addItem(infoWindowItem);  // 4
+
+                        }
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+          // 5
+        clusterManager.cluster();
 
     }
 
@@ -222,7 +213,7 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     //if permission granted.
                     locationPermission = true;
-                    getMyLocation();
+                 //   getMyLocation();
                     System.out.println("lkjhgfgdxsdsz");
 
 
@@ -245,33 +236,78 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
 
                 mMap.clear();
                 start = new LatLng(location.getLatitude(), location.getLongitude());
-              //  start = new LatLng(14.6665970992124,75.48478469252586);
-                System.out.println("mylocationnn "+start);
                 //  String custlat = getIntent().getExtras().getString("customerlatitude");
                 //  String custlong = getIntent().getExtras().getString("customerlongitude");
                 //  end = new LatLng(Double.parseDouble(custlat), Double.parseDouble(custlong));
-                end = new LatLng(14.665102499999998,75.4860463);
+              //  end = new LatLng(14.6665970992124,75.48478469252586);
+              //  end = new LatLng(14.6665970992124,75.48478469252586);
+                try{
+                    newOrderBeansList.clear();
+                    final JSONObject jsonObject = new JSONObject();
+                    //  jsonObject.put("UserId",sessionManager.getRegId("userId"));
+                    System.out.println("GetOrderslist"+jsonObject);
+                    Crop_Post.post_no_load(getActivity(), Urls.GetOrderslist, jsonObject, new VoleyJsonObjectCallback() {
+                        @Override
+                        public void onSuccessResponse(JSONObject result) {
+                            System.out.println("iGetOrderslistdetails"+result);
+                            try{
+                                jsonArray = result.getJSONArray("orderfromcart");
+                                for(int i=0;i<jsonArray.length();i++){
+                                    final JSONObject jsonObject_main_1 = jsonArray.getJSONObject(i);
+                                    cust_lat=jsonObject_main_1.getString("CustLatitude");
+                                    cust_lang=jsonObject_main_1.getString("CustLongitude");
+                                    store_lat=jsonObject_main_1.getString("Latitude");
+                                    store_lang=jsonObject_main_1.getString("Longitude");
+                                    double lat=Double.parseDouble(store_lat);
+                                    double lang=Double.parseDouble(store_lang);
+                                    // Create a cluster item for the marker and set the title and snippet using the constructor.
+                                    ClusterBean infoWindowItem = new ClusterBean(lat, lang, "1");
 
+// Add the cluster item (marker) to the cluster manager.
+                                    clusterManager.addItem(infoWindowItem);  // 4
+
+                                }
+
+
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                // 5
+                clusterManager.cluster();
                 System.out.println("dhjdhlk "+end+","+start);
                 //  mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(start,16));
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
-                        start, 18f);
+                        start, 16f);
                 mMap.animateCamera(cameraUpdate);
+
 
                 //  String lat = getIntent().getExtras().getString("latidkey");
                 //  String longitude = getIntent().getExtras().getString("langidkey");
 
                 // mMap.clear();
-                Findroutes(start,end);
+              //  Findroutes(start,end);
 
-                map_nav_arrow.setOnClickListener(new View.OnClickListener() {
+               /* map_nav_arrow.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onClick(View view) {
-                        String uri = "http://maps.google.com/maps?saddr=" + location.getLatitude() + "," + location.getLongitude() + "&daddr=" +14.665102499999998+","+75.4860463;
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                        startActivity(intent);
+                        if(map_nav_arrow.getDrawable().getConstantState().equals(map_nav_arrow.getContext().getDrawable(R.drawable.ic_right_angle_arrow).getConstantState())){
+                           map_nav_arrow.setImageResource(R.drawable.map_direction_icon);
+                           // call_instuction.setVisibility(View.VISIBLE);
+                        }else{
+                            String uri = "http://maps.google.com/maps?saddr=" + location.getLatitude() + "," + location.getLongitude() + "&daddr=" + 14.6665970992124 + "," + 75.48478469252586;
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                            startActivity(intent);
+                        }
+
                     }
-                });
+                });*/
 
             }
 
@@ -323,7 +359,7 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
 
             }else{
                 requestPermissions(new String[]{
-                        android.Manifest.permission.ACCESS_FINE_LOCATION
+                        Manifest.permission.ACCESS_FINE_LOCATION
                 },100);
             }
         }
@@ -379,9 +415,8 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
         for (int i = 0; i < route.size(); i++) {
 
             if (i == shortestRouteIndex) {
-              //  polyOptions.color(getResources().getColor(R.color.blue));
+             //   polyOptions.color(getActivity().getResources().getColor(R.color.blue));
                 polyOptions.color(ContextCompat.getColor(getActivity(), R.color.blue));
-
                 polyOptions.width(12);
                 polyOptions.addAll(route.get(shortestRouteIndex).getPoints());
                 Polyline polyline = mMap.addPolyline(polyOptions);
@@ -430,11 +465,10 @@ public class PickupLocationMapFragment extends Fragment implements OnMapReadyCal
 
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
-                Toast.makeText(getActivity(),"Reached",Toast.LENGTH_LONG).show();
-                selectedFragment = AddressDetailAfterPickupFragment.newInstance();
+                selectedFragment = ReachedDropLocationFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
-                transaction.addToBackStack("asdfg");
+                transaction.addToBackStack("dhskswadkw");
                 transaction.commit();
                 // ...
             } else {

@@ -14,7 +14,16 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sevennine.Delivery.Adapter.PickupItemsAdapter;
+import com.sevennine.Delivery.Bean.DutyStatusBean;
 import com.sevennine.Delivery.Bean.PickupItemsBean;
 import com.sevennine.Delivery.R;
 import com.sevennine.Delivery.SessionManager;
@@ -23,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -44,6 +54,10 @@ public class PickupCompleteFragmnet extends Fragment {
     TextView customer_address,customer_name,custaddress,pickupid;
     TextView submit;
     SessionManager sessionManager;
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    DatabaseReference mProfileRef = firebaseDatabase.getReference();
+    String userId;
     public static PickupCompleteFragmnet newInstance() {
         PickupCompleteFragmnet itemOnFragment = new PickupCompleteFragmnet();
         return itemOnFragment;
@@ -86,6 +100,8 @@ public class PickupCompleteFragmnet extends Fragment {
             }
         });
         sessionManager=new SessionManager(getActivity());
+        userId = sessionManager.getRegId("userId");
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,12 +158,28 @@ public class PickupCompleteFragmnet extends Fragment {
             public void onClick(View view) {
 
                 if (rateValue!=null){
+                    mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Boolean status = true;
+                            dataSnapshot.getRef().child("pickupComplete").setValue(status);
+                            //   Toast.makeText(DirectionsRouteMapActivity.this ,"Location saved to the Firebasedatabase",Toast.LENGTH_LONG).show();
+
+                            // dialog.dismiss();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                     Bundle bundle=new Bundle();
                     bundle.putString("delivery_map_status","true");
-                    selectedFragment = HomeFragment.newInstance();
+                    selectedFragment = DeliveryLocationMapFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
-                    selectedFragment.setArguments(bundle);
+                   // selectedFragment.setArguments(bundle);
                     transaction.commit();
                 }else{
                     mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_EXPANDED);
@@ -197,6 +229,22 @@ public class PickupCompleteFragmnet extends Fragment {
             @Override
             public void onClick(View view) {
                 if (rateValue!=null){
+                    mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String pickup_ratings = rateValue;
+                            dataSnapshot.getRef().child("pickupRatings").setValue(pickup_ratings);
+                            //   Toast.makeText(DirectionsRouteMapActivity.this ,"Location saved to the Firebasedatabase",Toast.LENGTH_LONG).show();
+
+                            // dialog.dismiss();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                     mBottomSheetBehavior1.setHideable(true);
                     mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_HIDDEN);
 

@@ -12,6 +12,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sevennine.Delivery.R;
 import com.sevennine.Delivery.SessionManager;
 
@@ -31,8 +38,12 @@ public class DeliveryCompleteFragment extends Fragment {
     RatingBar ratingBar;
     String rateValue;
     SessionManager sessionManager;
-    TextView customer_address,customer_name,store_name,store_address;
+    TextView customer_address,customer_name,store_name,store_address,delivery_ratings,rating_title;
     TextView delivery_complete,submit;
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    DatabaseReference mProfileRef = firebaseDatabase.getReference();
+    String userId;
     public static DeliveryCompleteFragment newInstance() {
         DeliveryCompleteFragment itemOnFragment = new DeliveryCompleteFragment();
         return itemOnFragment;
@@ -50,7 +61,11 @@ public class DeliveryCompleteFragment extends Fragment {
         submit=view.findViewById(R.id.submit);
         back_feed=view.findViewById(R.id.back_feed);
         linearLayout=view.findViewById(R.id.bottom_sheet1);
+        delivery_ratings=view.findViewById(R.id.delivery_ratings);
+        rating_title=view.findViewById(R.id.rating_title);
          sessionManager = new SessionManager(getActivity());
+        userId = sessionManager.getRegId("userId");
+
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
         view.setFocusableInTouchMode(true);
@@ -91,7 +106,26 @@ public class DeliveryCompleteFragment extends Fragment {
         reached.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                delivery_ratings.setText("Provide your rating for Delivery");
+                rating_title.setText("Rate Delivery Experience");
+
                 if (rateValue!=null){
+                    mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Boolean status = true;
+                            dataSnapshot.getRef().child("deliveryComplete").setValue(status);
+                            //   Toast.makeText(DirectionsRouteMapActivity.this ,"Location saved to the Firebasedatabase",Toast.LENGTH_LONG).show();
+
+                            // dialog.dismiss();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                     selectedFragment = HomeFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
@@ -139,6 +173,22 @@ public class DeliveryCompleteFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (rateValue!=null){
+                    mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String pickup_ratings = rateValue;
+                            dataSnapshot.getRef().child("deliveryRatings").setValue(pickup_ratings);
+                            //   Toast.makeText(DirectionsRouteMapActivity.this ,"Location saved to the Firebasedatabase",Toast.LENGTH_LONG).show();
+
+                            // dialog.dismiss();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                     mBottomSheetBehavior1.setHideable(true);
                     mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_HIDDEN);
 

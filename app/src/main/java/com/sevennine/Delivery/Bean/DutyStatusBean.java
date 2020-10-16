@@ -1,7 +1,5 @@
 package com.sevennine.Delivery.Bean;
 
-import java.util.Map;
-
 public class DutyStatusBean {
 
     boolean DutyOn;

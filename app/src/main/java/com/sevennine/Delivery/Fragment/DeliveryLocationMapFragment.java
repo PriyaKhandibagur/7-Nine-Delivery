@@ -81,7 +81,7 @@ public class DeliveryLocationMapFragment extends Fragment implements OnMapReadyC
     LinearLayout linearLayout,call_instuction;
     //polyline object
     private List<Polyline> polylines = null;
-    FloatingActionButton fab;
+    ImageView fab;
     public static DeliveryLocationMapFragment newInstance() {
         DeliveryLocationMapFragment itemOnFragment = new DeliveryLocationMapFragment();
         return itemOnFragment;

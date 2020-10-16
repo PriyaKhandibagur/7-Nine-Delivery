@@ -75,62 +75,62 @@
           android:textAllCaps="true"
           />
 
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical"
-       android:background="@color/black"
-       android:layout_below="@id/profile_layout"
-       >
-
-      <LinearLayout
+      <ScrollView
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="match_parent"
           android:orientation="vertical"
-          android:layout_marginHorizontal="20dp"
-
-
+          android:background="@color/black"
+          android:layout_below="@id/profile_layout"
           >
 
-
-          <LinearLayout
+         <LinearLayout
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:orientation="vertical"
-             android:paddingVertical="15dp"
-             android:layout_gravity="center_vertical"
+             android:layout_marginHorizontal="20dp"
+
 
              >
 
-         <TextView
 
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Account holder Name"
-             android:textSize="16dp"
-             android:layout_marginLeft="20dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="@color/grey_text"
-             android:textAllCaps="true"
-             android:layout_marginTop="10dp"
-             />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="15dp"
+                android:layout_gravity="center_vertical"
 
-             <TextView
-                 android:id="@+id/earning"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:text="Keerthana"
-                 android:textSize="16dp"
-                 android:layout_marginLeft="20dp"
-                 android:fontFamily="@font/segoeui"
-                 android:layout_marginTop="20dp"
-                 android:textColor="#fff"
-                 />
+                >
+
+               <TextView
+
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Account holder Name"
+                   android:textSize="16dp"
+                   android:layout_marginLeft="20dp"
+                   android:fontFamily="@font/segoeui"
+                   android:textColor="@color/grey_text"
+                   android:textAllCaps="true"
+                   android:layout_marginTop="10dp"
+                   />
+
+               <TextView
+                   android:id="@+id/aname"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Keerthana"
+                   android:textSize="16dp"
+                   android:layout_marginLeft="20dp"
+                   android:fontFamily="@font/segoeui"
+                   android:layout_marginTop="20dp"
+                   android:textColor="#fff"
+                   />
 
 
 
 
-         </LinearLayout>
+            </LinearLayout>
 
 
 
@@ -146,17 +146,17 @@
                 android:textAllCaps="true"
                 />
 
-         <TextView
-
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="1026123323111"
-             android:textSize="16dp"
-             android:layout_marginLeft="20dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#fff"
-             android:layout_marginTop="20dp"
-             />
+            <TextView
+                android:id="@+id/acc_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1026123323111"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                />
 
 
 
@@ -174,17 +174,18 @@
                 android:textAllCaps="true"
                 />
 
-         <TextView
+            <TextView
 
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Hdfc"
-             android:textSize="16dp"
-             android:layout_marginLeft="20dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#fff"
-             android:layout_marginTop="20dp"
-             />
+                android:id="@+id/branch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hdfc"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                />
 
 
 
@@ -201,91 +202,91 @@
                 android:textAllCaps="true"
                 android:layout_marginTop="20dp"
                 />
-         <TextView
+            <TextView
+                android:id="@+id/ifsc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="hdfc12345"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                />
 
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="hdfc12345"
-             android:textSize="16dp"
-             android:layout_marginLeft="20dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#fff"
-             android:layout_marginTop="20dp"
-             />
+            <TextView
 
-         <TextView
-
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Pan card number"
-             android:textSize="16dp"
-             android:layout_marginLeft="20dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="@color/grey_text"
-             android:textAllCaps="true"
-             android:layout_marginTop="20dp"
-             />
-         <TextView
-
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="PANC0123"
-             android:textSize="16dp"
-             android:layout_marginLeft="20dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#fff"
-             android:layout_marginTop="20dp"
-             />
-
-
-
-        <!-- <View
-             android:layout_width="match_parent"
-             android:layout_height="1dp"
-             android:background="@color/seperator"
-             android:layout_marginTop="10dp"
-             />-->
-
-         <TextView
-
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="UPI Payment details"
-             android:textSize="16dp"
-             android:layout_marginTop="25dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="@color/grey_text"
-             android:textAllCaps="true"
-             />
-
-         <TextView
-
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="20dp"
-             android:layout_marginTop="20dp"
-             android:fontFamily="@font/segoeui"
-             android:text="Persnalup handle"
-             android:textAllCaps="true"
-             android:textColor="@color/grey_text"
-             android:textSize="16dp" />
-
-         <TextView
-
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="NA"
-             android:textSize="16dp"
-             android:layout_marginLeft="20dp"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#fff"
-             android:layout_marginTop="20dp"
-             />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pan card number"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="@color/grey_text"
+                android:textAllCaps="true"
+                android:layout_marginTop="20dp"
+                />
+            <TextView
+                android:id="@+id/pan_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PANC0123"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                />
 
 
 
-      </LinearLayout>
+            <!-- <View
+                 android:layout_width="match_parent"
+                 android:layout_height="1dp"
+                 android:background="@color/seperator"
+                 android:layout_marginTop="10dp"
+                 />-->
 
-   </ScrollView>
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UPI Payment details"
+                android:textSize="16dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="@color/grey_text"
+                android:textAllCaps="true"
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/segoeui"
+                android:text="Persnalup handle"
+                android:textAllCaps="true"
+                android:textColor="@color/grey_text"
+                android:textSize="16dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NA"
+                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                />
+
+
+
+         </LinearLayout>
+
+      </ScrollView>
    </LinearLayout>
 </LinearLayout>

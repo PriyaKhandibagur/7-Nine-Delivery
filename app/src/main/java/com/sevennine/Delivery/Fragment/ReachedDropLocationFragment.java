@@ -10,9 +10,17 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sevennine.Delivery.R;
 import com.sevennine.Delivery.SessionManager;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -25,6 +33,10 @@ public class ReachedDropLocationFragment extends Fragment {
     Fragment selectedFragment;
     SessionManager sessionManager;
     TextView customer_address,customer_name,store_name,store_address;
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    DatabaseReference mProfileRef = firebaseDatabase.getReference();
+    String userId;
     public static ReachedDropLocationFragment newInstance() {
         ReachedDropLocationFragment itemOnFragment = new ReachedDropLocationFragment();
         return itemOnFragment;
@@ -38,7 +50,8 @@ public class ReachedDropLocationFragment extends Fragment {
         store_address=view.findViewById(R.id.store_address);
         back_feed=view.findViewById(R.id.back_feed);
         reached=view.findViewById(R.id.reached);
-        sessionManager = new SessionManager(getActivity());
+        sessionManager=new SessionManager(getActivity());
+        userId = sessionManager.getRegId("userId");
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
         view.setFocusableInTouchMode(true);
@@ -75,6 +88,22 @@ public class ReachedDropLocationFragment extends Fragment {
         reached.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Boolean status = true;
+                        dataSnapshot.getRef().child("reachedDelivryLocation").setValue(status);
+                        //   Toast.makeText(DirectionsRouteMapActivity.this ,"Location saved to the Firebasedatabase",Toast.LENGTH_LONG).show();
+
+                        // dialog.dismiss();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
                 selectedFragment = CollectCashFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);

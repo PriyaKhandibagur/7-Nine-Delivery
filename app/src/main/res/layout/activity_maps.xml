@@ -8,16 +8,29 @@
     android:layout_height="match_parent"
     tools:context=".MapsActivity"
     >
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageView
         android:id="@+id/fab"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="start"
-        android:text="Next"
-        android:src="@drawable/ic_right_arrow2"
-        android:layout_marginHorizontal="16dp"
-        android:background="@color/popup_bg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_go_back_left_arrow_black"
+        android:background="?attr/selectableItemBackgroundBorderless"
+
         />
+
+    <!--
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:text="Next"
+            android:src="@drawable/ic_right_arrow2"
+            android:layout_marginHorizontal="16dp"
+            android:background="@color/popup_bg"
+            />
+    -->
 
 </fragment>
 

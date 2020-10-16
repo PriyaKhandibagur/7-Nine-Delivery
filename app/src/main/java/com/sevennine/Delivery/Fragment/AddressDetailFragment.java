@@ -107,18 +107,19 @@ public class AddressDetailFragment extends Fragment {
         userId = sessionManager.getRegId("userId");
         System.out.println("LKJH "+userId);
 //.equalTo(sessionManager.getRegId("orderid"))
-      /*  mProfileRef.child(userId).child("Order Summary").child("-MHQ4YRmmEvftSSiFjy6").addValueEventListener(new ValueEventListener() {
+       /* mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 System.out.println("Orderrrrr "+dataSnapshot);
-                System.out.println("Orderrrrr 1 "+dataSnapshot.getValue(Person.class).getCustomername());
+                System.out.println("Orderrrrr 1 "+dataSnapshot.getValue(Person.class).getCustlatlang().get("latitude"));
                 System.out.println("Orderrrrr 2 "+dataSnapshot.getChildren());
                 System.out.println("Orderrrrr 4 "+dataSnapshot.getChildrenCount());
+
                // Person order = new Person(dataSnapshot.getValue());
-               *//* for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    Person news = postSnapshot.getValue(Person.class);
-                    System.out.println("Orderrrrr 3 "+news.getCustomername());
-                }*//*
+//                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+//                    Person news = postSnapshot.getValue(Person.class);
+//                    System.out.println("Orderrrrr 3 "+news.getCustomername());
+//                }
 
             }
 
@@ -134,7 +135,7 @@ public class AddressDetailFragment extends Fragment {
             public void onClick(View view) {
                 selectedFragment = PickupLocationMapFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.replace(R.id.frame_layout1, selectedFragment);
                 transaction.addToBackStack("khdsjkj");
                 transaction.commit();
             }

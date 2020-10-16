@@ -54,7 +54,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
@@ -219,9 +221,29 @@ public class OrdersListAdapter extends RecyclerView.Adapter<OrdersListAdapter.My
                 // DatabaseReference postsRef = mProfileRef.child("OrderSummary");
                 String key = mProfileRef.child("Order Summary").push().getKey();
                 System.out.println("pushkeyidddd "+key);
-/*Person p = new Person();
-p.setCustomername("Test");
-                mProfileRef.child(userId).child("Order Summary").child(key).setValue(p);*/
+//Person p = new Person();
+//p.setCustomername(cust_name);
+//p.setCustomeraddress("");
+//p.setDistance("");
+//p.setFirstmile("");
+//p.setOrderId("");
+//p.setStoreaddress("");
+////p.set("");
+//p.setCustomeraddress("");
+//p.setCustomeraddress("");
+//p.setCustomeraddress("");
+//p.setCustomeraddress("");
+
+
+                Map<String,Double> cust = new HashMap<>();
+                cust.put("latitude", Double.parseDouble(custlang));
+                cust.put("longitude", Double.parseDouble(custlat));
+
+                Map<String,Double> store = new HashMap<>();
+                store.put("latitude", Double.parseDouble(storelat));
+                store.put("longitude", Double.parseDouble(storelang));
+                mProfileRef.child(userId).child("Order Summary").child(key).setValue(new Person(products.getPayuid(), "Siddivinayaka stores", "#201, Siddivinayaka stores, Vidya Nagar Byadgi, near BESM College", cust_name, cust_addr,
+                        firstmile, lastmile, distance_total, timing, total_amount, store, cust,"0","0","0",false,false,false,false,false));
                 sessionManager.saveorderkey(key);
                 sessionManager.saveorderdetails(products.getStorename(),holder.store_address.getText().toString(),products.getUsername(),products.getAddr(),products.getProd_price(),products.getLatitude(),products.getLongitude(),products.getCustlat(),products.getCustlong(),products.getPayuid());
 

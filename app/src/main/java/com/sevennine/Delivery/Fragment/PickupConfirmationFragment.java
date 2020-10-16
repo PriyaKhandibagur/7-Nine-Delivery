@@ -11,6 +11,13 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sevennine.Delivery.Adapter.OrdersListAdapter;
 import com.sevennine.Delivery.Adapter.PickupItemsAdapter;
 import com.sevennine.Delivery.Bean.NewOrderBean;
@@ -21,6 +28,7 @@ import com.sevennine.Delivery.SessionManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -38,6 +46,10 @@ public class PickupConfirmationFragment extends Fragment {
     RecyclerView recyclerView;
     SessionManager sessionManager;
     TextView customer_address,customer_name,custaddress,payment_amt;
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    DatabaseReference mProfileRef = firebaseDatabase.getReference();
+    String userId;
     public static PickupConfirmationFragment newInstance() {
         PickupConfirmationFragment itemOnFragment = new PickupConfirmationFragment();
         return itemOnFragment;
@@ -78,6 +90,8 @@ public class PickupConfirmationFragment extends Fragment {
             }
         });
         sessionManager=new SessionManager(getActivity());
+        userId = sessionManager.getRegId("userId");
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +129,22 @@ public class PickupConfirmationFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
+                        mProfileRef.child(userId).child("Order Summary").child(sessionManager.getRegId("orderid")).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Boolean status = true;
+                                dataSnapshot.getRef().child("itemsConfirmed").setValue(status);
+                                //   Toast.makeText(DirectionsRouteMapActivity.this ,"Location saved to the Firebasedatabase",Toast.LENGTH_LONG).show();
+
+                                // dialog.dismiss();
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                         selectedFragment = PickupCompleteFragmnet.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout1, selectedFragment);

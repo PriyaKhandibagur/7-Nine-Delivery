@@ -35,7 +35,7 @@
             android:name="firebase_crashlytics_collection_enabled"
             android:value="true" />
 
-        <activity android:name=".Activity.LandingPage">
+        <activity android:name=".Activity.NewSignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,11 +53,23 @@
             android:hardwareAccelerated="true" />
         <activity android:name=".OrdersActivity" />
         <activity android:name=".StoreDeliveryLocationDetails" />
-        <activity android:name=".CustomAuthLoginActivity" />
+        <activity android:name=".Activity.LandingPage" />
+        <activity android:name=".Activity.NewEnterOTP" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".DirectionsMapCustomerActivity"
             android:hardwareAccelerated="true" />
+
+        <service android:name="com.sevennine.Delivery.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="com.sevennine.Delivery.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

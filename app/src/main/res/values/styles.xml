@@ -27,4 +27,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="LoginTheme">
+        <item name="android:text">@string/Earnings</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
